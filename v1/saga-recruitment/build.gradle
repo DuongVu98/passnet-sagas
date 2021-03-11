@@ -1,0 +1,100 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+    id "com.google.protobuf" version "0.8.8"
+    id "com.commercehub.gradle.plugin.avro" version "0.9.1"
+}
+
+group = 'com.cseiu.passnet.saga'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '14'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://packages.confluent.io/maven/'
+    }
+}
+
+sourceSets {
+    main {
+        proto {
+            srcDir 'src/main/proto'
+        }
+        java {
+            srcDirs 'src/main/java'
+            srcDirs 'generated-sources/main/java'
+            srcDirs 'generated-sources/main/grpc'
+            srcDirs 'build/generated/avro'
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.7.0"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.19.0"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+    generateProtoTasks.generatedFilesBaseDir = 'generated-sources'
+}
+
+avro {
+    createSetters = false
+    stringType = "String"
+    fieldVisibility = "PRIVATE"
+}
+
+dependencies {
+    implementation 'org.springframework.kafka:spring-kafka'
+    compileOnly 'org.projectlombok:lombok'
+
+    compile 'io.github.lognet:grpc-spring-boot-starter:4.0.0'
+    compile 'io.github.lognet:grpc-client-spring-boot-starter:4.0.0'
+    compile 'io.confluent:kafka-avro-serializer:5.4.1'
+    compile "org.apache.avro:avro:1.9.2"
+
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'org.springframework.kafka:spring-kafka-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+generateAvroJava {
+    source("src/main/resources/avro")
+    outputDir = file("build/generated/avro")
+}
+
+bootJar {
+    manifest {
+        attributes(
+                'Start-Class': 'com.cseiu.passnet.saga.recruitmentsaga.RecruitmentSagaApplication'
+        )
+    }
+}
+
+task bootRunLocal(dependsOn: bootRun) {
+    bootRun {
+        args = ["--spring.profiles.active=local"]
+    }
+}

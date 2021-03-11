@@ -1,0 +1,17 @@
+grpc:
+  port: 9000
+  enable-reflection: true
+
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: 192.168.33.15:8082
+    consumer:
+      bootstrap-servers: 192.168.33.15:8082
+      group-id: passnet-auth-saga
+
+messages:
+  kafka:
+    event-topics:
+      test: test
+      create-user-event: create-user-event

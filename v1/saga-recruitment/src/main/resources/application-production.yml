@@ -1,0 +1,5 @@
+grpc:
+  port: ${GRPC_PORT}
+  main-service:
+    host: ${MAIN_SERVICE_HOST}
+    port: ${MAIN_SERVICE_PORT}
