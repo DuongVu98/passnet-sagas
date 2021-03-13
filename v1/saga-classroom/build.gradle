@@ -65,7 +65,7 @@ dependencies {
     implementation 'org.springframework.kafka:spring-kafka'
     compile 'io.github.lognet:grpc-spring-boot-starter:4.0.0'
     compile 'io.github.lognet:grpc-client-spring-boot-starter:4.0.0'
-    compile 'io.confluent:kafka-avro-serializer:5.4.1'
+    compile 'io.confluent:kafka-avro-serializer:6.1.0'
     compile "org.apache.avro:avro:1.9.2"
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

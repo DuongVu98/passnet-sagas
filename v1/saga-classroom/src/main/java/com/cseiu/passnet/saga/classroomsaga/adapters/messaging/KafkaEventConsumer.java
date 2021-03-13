@@ -13,22 +13,22 @@ import org.springframework.stereotype.Component;
 @Slf4j(topic = "[KafkaEventConsumer]")
 public class KafkaEventConsumer {
 
-    @KafkaListener(topics = "topic-name", containerFactory = "postNewJobEventContainerFactory")
+    @KafkaListener(topics = "post-new-job-event")
     public void listenPostNewJobEvent(@Payload PostNewJobEventAvro event){
         log.debug("log record --> {}", event);
     }
 
-    @KafkaListener(topics = "topic-name", containerFactory = "acceptStudentApplicationEventContainerFactory")
+    @KafkaListener(topics = "accept-student-application-event")
     public void listenAcceptStudentApplicationEvent(@Payload AcceptStudentApplicationEventAvro event){
         log.debug("log record --> {}", event);
     }
 
-    @KafkaListener(topics = "topic-name", containerFactory = "removeStudentApplicationEventContainerFactory")
+    @KafkaListener(topics = "remove-student-application-event")
     public void listenRemoveStudentApplicationEvent(@Payload RemoveStudentApplicationEventAvro event){
         log.debug("log record --> {}", event);
     }
 
-    @KafkaListener(topics = "topic-name", containerFactory = "deleteJobEventContainerFactory")
+    @KafkaListener(topics = "delete-job-event")
     public void listenDeleteJobEvent(@Payload DeleteJobEventAvro event){
         log.debug("log record --> {}", event);
     }

@@ -24,55 +24,55 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfiguration {
 
-    @Value("${kafka.bootstrap-server}")
-    private String bootstrapServer;
+//    @Value("${kafka.bootstrap-server}")
+//    private String bootstrapServer;
+//
+//    @Bean
+//    public Map<String, Object> consumerConfigs(){
+//        Map<String, Object> props = new HashMap<>();
+//
+//        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
+//        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+//        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
+//        props.put(ConsumerConfig.GROUP_ID_CONFIG, "classroom-saga");
+//        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+//
+//        return props;
+//    }
+//
+//    public ConsumerFactory<String, Object> consumerFactory(){
+//        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
+//    }
 
-    @Bean
-    public Map<String, Object> consumerConfigs(){
-        Map<String, Object> props = new HashMap<>();
-
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "classroom-saga");
-        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-
-        return props;
-    }
-
-    public ConsumerFactory<String, Object> consumerFactory(){
-        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
-    }
-
-    @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, PostNewJobEventAvro>> postNewJobEventContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, PostNewJobEventAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
-
-        factory.setConsumerFactory(consumerFactory());
-        return factory;
-    }
-
-    @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, AcceptStudentApplicationEventAvro>> acceptStudentApplicationEventContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, AcceptStudentApplicationEventAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
-
-        factory.setConsumerFactory(consumerFactory());
-        return factory;
-    }
-
-    @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, RemoveStudentApplicationEventAvro>> removeStudentApplicationEventContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, RemoveStudentApplicationEventAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
-
-        factory.setConsumerFactory(consumerFactory());
-        return factory;
-    }
-
-    @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, DeleteJobEventAvro>> deleteJobEventContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, DeleteJobEventAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
-
-        factory.setConsumerFactory(consumerFactory());
-        return factory;
-    }
+//    @Bean
+//    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, PostNewJobEventAvro>> postNewJobEventContainerFactory(){
+//        ConcurrentKafkaListenerContainerFactory<String, PostNewJobEventAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
+//
+//        factory.setConsumerFactory(consumerFactory());
+//        return factory;
+//    }
+//
+//    @Bean
+//    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, AcceptStudentApplicationEventAvro>> acceptStudentApplicationEventContainerFactory(){
+//        ConcurrentKafkaListenerContainerFactory<String, AcceptStudentApplicationEventAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
+//
+//        factory.setConsumerFactory(consumerFactory());
+//        return factory;
+//    }
+//
+//    @Bean
+//    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, RemoveStudentApplicationEventAvro>> removeStudentApplicationEventContainerFactory(){
+//        ConcurrentKafkaListenerContainerFactory<String, RemoveStudentApplicationEventAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
+//
+//        factory.setConsumerFactory(consumerFactory());
+//        return factory;
+//    }
+//
+//    @Bean
+//    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, DeleteJobEventAvro>> deleteJobEventContainerFactory(){
+//        ConcurrentKafkaListenerContainerFactory<String, DeleteJobEventAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
+//
+//        factory.setConsumerFactory(consumerFactory());
+//        return factory;
+//    }
 }
