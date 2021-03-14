@@ -39,7 +39,7 @@ public class KafkaConsumerConfiguration {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "classroom_saga_group_id");
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         props.put("schema.registry.url", "http://52.148.184.202:8081");
-//        props.put("specific.avro.reader", "true");
+        props.put("specific.avro.reader", "true");
 
         return props;
     }
@@ -47,7 +47,7 @@ public class KafkaConsumerConfiguration {
     public ConsumerFactory<String, Object> consumerFactory(){
         KafkaAvroDeserializer avroDeser = new KafkaAvroDeserializer();
         avroDeser.configure(consumerConfigs(), false);
-        return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(), avroDeser);
+        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
     }
 
 //    @Bean
@@ -58,8 +58,8 @@ public class KafkaConsumerConfiguration {
 //        return factory;
 //    }
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, GenericRecord> postNewJobEventContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, GenericRecord> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, PostNewJobEventAvro> postNewJobEventContainerFactory(){
+        ConcurrentKafkaListenerContainerFactory<String, PostNewJobEventAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
 
         factory.setConsumerFactory(consumerFactory());
         return factory;

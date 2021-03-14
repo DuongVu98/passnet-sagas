@@ -5,6 +5,7 @@ spring:
       - http://52.148.184.202:9092
     properties:
       schema.registry.url: http://52.148.184.202:8081
+      specific.avro.reader: true
     consumer:
       group-id: classroom_saga_group_id
       auto-offset-reset: earliest
