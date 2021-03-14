@@ -1,0 +1,12 @@
+{
+    "type":"record",
+    "namespace": "com.cse.iu.passnet.saga.avro",
+    "name": "DeleteJobEventAvro",
+    "fields": [
+        {
+            "name": "job_id",
+            "type": "string",
+            "doc": "Job ID"
+        }
+    ]
+}
