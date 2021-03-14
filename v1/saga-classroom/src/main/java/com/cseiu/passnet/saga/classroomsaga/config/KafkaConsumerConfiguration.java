@@ -6,6 +6,7 @@ import com.cse.iu.passnet.saga.avro.DeleteJobEventAvro;
 import com.cse.iu.passnet.saga.avro.RemoveStudentApplicationEventAvro;
 
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
+import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,27 +26,30 @@ import java.util.Map;
 @Configuration
 public class KafkaConsumerConfiguration {
 
-//    @Value("${spring.kafka.bootstrap-server}")
-//    private String bootstrapServer;
-//
-//    @Bean
-//    public Map<String, Object> consumerConfigs(){
-//        Map<String, Object> props = new HashMap<>();
-//
-//        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
-//        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-//        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
-//        props.put(ConsumerConfig.GROUP_ID_CONFIG, "classroom_saga_group_id");
-//        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-//        props.put("schema.registry.url", "http://52.148.184.202:8081");
-//
-//        return props;
-//    }
-//
-//    public ConsumerFactory<String, Object> consumerFactory(){
-//        return new DefaultKafkaConsumerFactory<>(consumerConfigs());
-//    }
-//
+    @Value("${spring.kafka.bootstrap-server}")
+    private String bootstrapServer;
+
+    @Bean
+    public Map<String, Object> consumerConfigs(){
+        Map<String, Object> props = new HashMap<>();
+
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
+        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class);
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "classroom_saga_group_id");
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        props.put("schema.registry.url", "http://52.148.184.202:8081");
+//        props.put("specific.avro.reader", "true");
+
+        return props;
+    }
+
+    public ConsumerFactory<String, Object> consumerFactory(){
+        KafkaAvroDeserializer avroDeser = new KafkaAvroDeserializer();
+        avroDeser.configure(consumerConfigs(), false);
+        return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(), avroDeser);
+    }
+
 //    @Bean
 //    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, PostNewJobEventAvro>> postNewJobEventContainerFactory(){
 //        ConcurrentKafkaListenerContainerFactory<String, PostNewJobEventAvro> factory = new ConcurrentKafkaListenerContainerFactory<>();
@@ -53,6 +57,13 @@ public class KafkaConsumerConfiguration {
 //        factory.setConsumerFactory(consumerFactory());
 //        return factory;
 //    }
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, GenericRecord> postNewJobEventContainerFactory(){
+        ConcurrentKafkaListenerContainerFactory<String, GenericRecord> factory = new ConcurrentKafkaListenerContainerFactory<>();
+
+        factory.setConsumerFactory(consumerFactory());
+        return factory;
+    }
 //
 //    @Bean
 //    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, AcceptStudentApplicationEventAvro>> acceptStudentApplicationEventContainerFactory(){
