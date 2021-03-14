@@ -1,5 +1,6 @@
 spring:
   kafka:
+    bootstrap-server: http://52.148.184.202:9092
     bootstrap-servers:
       - http://52.148.184.202:9092
     properties:

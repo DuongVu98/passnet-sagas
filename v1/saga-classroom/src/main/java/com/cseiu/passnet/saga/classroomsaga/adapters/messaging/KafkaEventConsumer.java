@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Slf4j(topic = "[KafkaEventConsumer]")
 public class KafkaEventConsumer {
 
-    @KafkaListener(topics = "post-new-job-event")
+    @KafkaListener(topics = "post-new-job-event", containerFactory = "postNewJobEventContainerFactory")
     public void listenPostNewJobEvent(@Payload PostNewJobEventAvro event){
         log.debug("log record --> {}", event);
     }
