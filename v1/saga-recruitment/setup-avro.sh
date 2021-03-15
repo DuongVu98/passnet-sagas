@@ -1,9 +1,17 @@
-POST_NEW_JOB_OBJECT=post-new-job.event.avsc
-ACCEPTJOB_JOB_APPLICATION_OBJECT=accept-job-application.event.avsc
-REMOVE_JOB_APPLICATION_OBJECT=post-new-job.event.avsc
-DELETE_JOB_MODEL=delete-job.event.avsc
+#!/bin/bash
 
-curl -X GET \
-  -H "Authorization: Bearer ${GCLOUD_STORAGE_ACCESS_TOKEN}" \
-  -o "src/main/resources/avro/${ACCEPTJOB_JOB_APPLICATION_OBJECT}" \
-  "https://storage.googleapis.com/storage/v1/b/passnet-event-avro-models/o/${ACCEPTJOB_JOB_APPLICATION_OBJECT}?alt=media"
+files=(
+    post-new-job.event.avsc
+    accept-job-application.event.avsc
+    delete-job.event.avsc
+    remove-job-application.event.avsc
+)
+
+for file in "${files[@]}"
+do
+    curl -X GET \
+    -H "Authorization: Bearer ${GCLOUD_STORAGE_ACCESS_TOKEN}" \
+    -o "src/main/resources/avro/${file}" \
+    "https://storage.googleapis.com/storage/v1/b/${PASSNET_EVENT_AVRO_MODEL_BUCKET}/o/${file}?alt=media"
+done
+
