@@ -31,8 +31,7 @@ public class KafkaProducerConfiguration {
     @Value("${spring.kafka.properties.schema-registry-url}")
     private String schemaRegistryUrl;
 
-    @Bean(value = "post-new-job")
-    public KafkaTemplate<String, PostNewJobEventAvro> postNewJobEventAvroKafkaTemplate() {
+    private Map<String, Object> configProps() {
         Map<String, Object> configProps = new HashMap<>();
 
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
@@ -41,45 +40,26 @@ public class KafkaProducerConfiguration {
         configProps.put("schema.registry.url", schemaRegistryUrl);
         configProps.put("value.subject.name.strategy", TopicRecordNameStrategy.class.getName());
 
-        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps));
+        return configProps;
+    }
+
+    @Bean(value = "post-new-job")
+    public KafkaTemplate<String, PostNewJobEventAvro> postNewJobEventAvroKafkaTemplate() {
+        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
     }
 
     @Bean(value = "accept-student-application")
     public KafkaTemplate<String, AcceptStudentApplicationEventAvro> acceptStudentApplicationEventAvroKafkaTemplate() {
-        Map<String, Object> configProps = new HashMap<>();
-
-        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
-        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
-        configProps.put("schema.registry.url", schemaRegistryUrl);
-        configProps.put("value.subject.name.strategy", TopicRecordNameStrategy.class.getName());
-
-        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps));
+        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
     }
 
     @Bean(value = "remove-student-application")
     public KafkaTemplate<String, RemoveStudentApplicationEventAvro> removeStudentApplicationEventAvroKafkaTemplate() {
-        Map<String, Object> configProps = new HashMap<>();
-
-        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
-        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
-        configProps.put("schema.registry.url", schemaRegistryUrl);
-        configProps.put("value.subject.name.strategy", TopicRecordNameStrategy.class.getName());
-
-        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps));
+        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
     }
 
     @Bean(value = "delete-job")
     public KafkaTemplate<String, DeleteJobEventAvro> deleteJobEventAvroKafkaTemplate() {
-        Map<String, Object> configProps = new HashMap<>();
-
-        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
-        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
-        configProps.put("schema.registry.url", schemaRegistryUrl);
-        configProps.put("value.subject.name.strategy", TopicRecordNameStrategy.class.getName());
-
-        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps));
+        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
     }
 }

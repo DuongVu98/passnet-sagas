@@ -1,5 +1,0 @@
-grpc:
-  port: 6565
-  main-service:
-    host: localhost
-    port: 9090
