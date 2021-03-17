@@ -19,7 +19,6 @@ public class GrpcConsumerConfig {
     @Bean
     public EventConsumerGrpc.EventConsumerBlockingStub eventProducerBlockingStub() {
         ManagedChannel channel = ManagedChannelBuilder.forAddress(serviceHost, servicePort).usePlaintext().build();
-        EventConsumerGrpc.EventConsumerBlockingStub eventProducerBlockingStub = EventConsumerGrpc.newBlockingStub(channel);
-        return eventProducerBlockingStub;
+        return EventConsumerGrpc.newBlockingStub(channel);
     }
 }
