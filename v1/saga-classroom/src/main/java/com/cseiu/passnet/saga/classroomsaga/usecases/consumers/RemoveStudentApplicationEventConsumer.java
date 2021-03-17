@@ -22,6 +22,6 @@ public class RemoveStudentApplicationEventConsumer implements IMessageConsumer<R
     @Override
     public void consume(RemoveStudentApplicationEventAvro avro) {
         ConsumeEvents.RemoveStudentApplicationEvent event = protobufEventConvertor.buildRemoveStudentApplicationEventProtobuf(avro);
-        ConsumeEvents.SagaResponse response = eventConsumerBlockingStub.consumeRemoveStudentApplicationEvent(event);
+        ConsumeEvents.MainServiceResponse response = eventConsumerBlockingStub.consumeRemoveStudentApplicationEvent(event);
     }
 }

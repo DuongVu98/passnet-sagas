@@ -22,6 +22,6 @@ public class PostNewJobEventConsumer implements IMessageConsumer<PostNewJobEvent
     @Override
     public void consume(PostNewJobEventAvro avro) {
         ConsumeEvents.PostNewJobEvent event = protobufEventConvertor.buildPostNewJobEventProtobuf(avro);
-        ConsumeEvents.SagaResponse response = eventConsumerBlockingStub.consumePostNewJobEvent(event);
+        ConsumeEvents.MainServiceResponse response = eventConsumerBlockingStub.consumePostNewJobEvent(event);
     }
 }

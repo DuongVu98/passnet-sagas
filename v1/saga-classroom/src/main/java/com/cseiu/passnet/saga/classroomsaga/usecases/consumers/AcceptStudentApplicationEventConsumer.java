@@ -22,6 +22,6 @@ public class AcceptStudentApplicationEventConsumer implements IMessageConsumer<A
     @Override
     public void consume(AcceptStudentApplicationEventAvro avro) {
         ConsumeEvents.AcceptStudentApplicationEvent event = protobufEventConvertor.buildAcceptStudentApplicationEventProtobuf(avro);
-        ConsumeEvents.SagaResponse response = eventConsumerBlockingStub.consumeAcceptStudentApplicationEvent(event);
+        ConsumeEvents.MainServiceResponse response = eventConsumerBlockingStub.consumeAcceptStudentApplicationEvent(event);
     }
 }

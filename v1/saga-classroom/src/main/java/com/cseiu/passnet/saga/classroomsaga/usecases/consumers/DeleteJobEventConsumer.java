@@ -23,6 +23,6 @@ public class DeleteJobEventConsumer implements IMessageConsumer<DeleteJobEventAv
     @Override
     public void consume(DeleteJobEventAvro avro) {
         ConsumeEvents.DeleteJobEvent event = protobufEventConvertor.buildDeleteJobEventProtobuf(avro);
-        ConsumeEvents.SagaResponse response = eventConsumerBlockingStub.consumeDeleteJobEvent(event);
+        ConsumeEvents.MainServiceResponse response = eventConsumerBlockingStub.consumeDeleteJobEvent(event);
     }
 }

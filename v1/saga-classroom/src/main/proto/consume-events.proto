@@ -5,13 +5,13 @@ option java_package = "com.cseiu.passnet.saga.classroomsaga";
 package consumeEvents;
 
 service EventConsumer {
-  rpc ConsumePostNewJobEvent (PostNewJobEvent) returns (SagaResponse) {}
-  rpc ConsumeAcceptStudentApplicationEvent (AcceptStudentApplicationEvent) returns (SagaResponse) {}
-  rpc ConsumeRemoveStudentApplicationEvent (RemoveStudentApplicationEvent) returns (SagaResponse) {}
-  rpc ConsumeDeleteJobEvent (DeleteJobEvent) returns (SagaResponse) {}
+  rpc ConsumePostNewJobEvent (PostNewJobEvent) returns (MainServiceResponse) {}
+  rpc ConsumeAcceptStudentApplicationEvent (AcceptStudentApplicationEvent) returns (MainServiceResponse) {}
+  rpc ConsumeRemoveStudentApplicationEvent (RemoveStudentApplicationEvent) returns (MainServiceResponse) {}
+  rpc ConsumeDeleteJobEvent (DeleteJobEvent) returns (MainServiceResponse) {}
 }
 
-message SagaResponse {
+message MainServiceResponse {
   string message = 1;
 }
 
