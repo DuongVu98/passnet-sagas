@@ -7,7 +7,7 @@ import com.cseiu.passnet.saga.classroomsaga.usecases.services.ProtobufEventConve
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "delete-job-event-consumer")
 public class DeleteJobEventConsumer implements IMessageConsumer<DeleteJobEventAvro>{
 
     private final ProtobufEventConvertor protobufEventConvertor;

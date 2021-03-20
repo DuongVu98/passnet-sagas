@@ -4,10 +4,12 @@ import com.cse.iu.passnet.saga.avro.PostNewJobEventAvro;
 import com.cseiu.passnet.saga.classroomsaga.ConsumeEvents;
 import com.cseiu.passnet.saga.classroomsaga.EventConsumerGrpc;
 import com.cseiu.passnet.saga.classroomsaga.usecases.services.ProtobufEventConvertor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Slf4j(topic = "[PostNewJobEventConsumer]")
+@Component(value = "post-new-job-event-consumer")
 public class PostNewJobEventConsumer implements IMessageConsumer<PostNewJobEventAvro> {
 
     private final ProtobufEventConvertor protobufEventConvertor;
@@ -22,6 +24,7 @@ public class PostNewJobEventConsumer implements IMessageConsumer<PostNewJobEvent
     @Override
     public void consume(PostNewJobEventAvro avro) {
         ConsumeEvents.PostNewJobEvent event = protobufEventConvertor.buildPostNewJobEventProtobuf(avro);
+        log.info("about to consume event");
         ConsumeEvents.MainServiceResponse response = eventConsumerBlockingStub.consumePostNewJobEvent(event);
     }
 }
