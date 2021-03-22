@@ -17,5 +17,7 @@ spring:
     template:
       default-topic:
 grpc:
-  host: localhost
-  port: 9090
+  port: 6566
+  main-service:
+    host: localhost
+    port: 50051

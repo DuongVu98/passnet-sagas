@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GrpcConsumerConfig {
 
-    @Value("${saga.grpc.host}")
+    @Value("${grpc.main-service.host}")
     private String serviceHost;
 
-    @Value("${saga.grpc.port}")
+    @Value("${grpc.main-service.port}")
     private int servicePort;
 
     @Bean

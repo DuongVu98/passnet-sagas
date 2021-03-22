@@ -7,7 +7,7 @@ import com.cseiu.passnet.saga.classroomsaga.usecases.services.ProtobufEventConve
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "remove-student-application-event-consumer")
 public class RemoveStudentApplicationEventConsumer implements IMessageConsumer<RemoveStudentApplicationEventAvro>{
 
     private final ProtobufEventConvertor protobufEventConvertor;
