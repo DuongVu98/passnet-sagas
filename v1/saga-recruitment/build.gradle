@@ -88,6 +88,7 @@ generateAvroJava {
 }
 
 bootJar {
+    archiveName 'PassnetRecruitmentSaga.jar'
     manifest {
         attributes(
                 'Start-Class': 'com.cseiu.passnet.saga.recruitmentsaga.RecruitmentSagaApplication'

@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  app:
+    image: openjdk:15-alpine
+    container_name: passnet_recruitment_saga_dev
+    volumes:
+      - "..:/app:rw"
+    command: "java -jar /app/build/libs/PassnetRecruitmentSaga.jar --spring.profiles.active=local"
+    ports:
+      - "6565:6565"
