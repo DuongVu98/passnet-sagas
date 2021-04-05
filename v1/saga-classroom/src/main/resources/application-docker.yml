@@ -1,0 +1,23 @@
+spring:
+  kafka:
+    bootstrap-server: http://52.148.184.202:9092
+    bootstrap-servers:
+      - http://52.148.184.202:9092
+    properties:
+      schema.registry.url: http://52.148.184.202:8081
+      specific.avro.reader: true
+    consumer:
+      group-id: classroom_saga_group_id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+    template:
+      default-topic:
+grpc:
+  port: 6566
+  main-service:
+    host: passnet-classroom-service
+    port: 9999
