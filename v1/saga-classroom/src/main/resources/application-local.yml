@@ -1,10 +1,10 @@
 spring:
   kafka:
-    bootstrap-server: http://52.148.184.202:9092
+    bootstrap-server: http://20.69.120.200:9092
     bootstrap-servers:
-      - http://52.148.184.202:9092
+      - http://20.69.120.200:9092
     properties:
-      schema.registry.url: http://52.148.184.202:8081
+      schema.registry.url: http://20.69.120.200:8081
       specific.avro.reader: true
     consumer:
       group-id: classroom_saga_group_id

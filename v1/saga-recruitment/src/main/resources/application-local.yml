@@ -1,14 +1,14 @@
 spring:
   kafka:
     producer:
-      bootstrap-servers: http://52.148.184.202:9092
+      bootstrap-servers: http://20.69.120.200:9092
       topics:
         post-new-job-event: post-new-job-event
         accept-student-application-event: accept-student-application-event
         remove-student-application-event: remove-student-application-event
         delete-job-event: delete-job-event
     properties:
-      schema-registry-url: http://52.148.184.202:8081
+      schema-registry-url: http://20.69.120.200:8081
 grpc:
   port: 6565
   main-service:
