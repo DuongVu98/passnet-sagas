@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Service
 public class SagaStoreService {
-    private Map<String, SagaOrchestrator> sagaStore = new HashMap<>();
+    private final Map<String, SagaOrchestrator> sagaStore = new HashMap<>();
 
     public void storeSaga(SagaOrchestrator saga) {
         this.sagaStore.put(saga.getEventId(), saga);

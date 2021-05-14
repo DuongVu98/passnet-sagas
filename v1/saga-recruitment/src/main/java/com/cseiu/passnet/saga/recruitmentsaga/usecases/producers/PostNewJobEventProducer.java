@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-@Component("post-new-job-event-producer")
+@Component("post-new-job.event.producer")
 public class PostNewJobEventProducer implements IMessageProducer<ProduceEvents.PostNewJobEvent> {
 
     private final KafkaTemplate<String, PostNewJobEventAvro> kafkaTemplate;

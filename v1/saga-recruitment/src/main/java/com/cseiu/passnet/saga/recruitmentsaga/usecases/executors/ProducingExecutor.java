@@ -14,7 +14,16 @@ public class ProducingExecutor {
     private final IMessageProducer<ProduceEvents.DeleteJobEvent> deleteJobEventMessageProducer;
 
     @Autowired
-    public ProducingExecutor(@Qualifier("post-new-job-event-producer") IMessageProducer<ProduceEvents.PostNewJobEvent> postNewJobEventMessageProducer, @Qualifier("accept-student-application-event-producer") IMessageProducer<ProduceEvents.AcceptStudentApplicationEvent> acceptStudentApplicationEventIMessageProducer, IMessageProducer<ProduceEvents.RemoveStudentApplicationEvent> removeStudentApplicationEventIMessageProducer, @Qualifier("delete-job-event-producer") IMessageProducer<ProduceEvents.DeleteJobEvent> deleteJobEventMessageProducer) {
+    public ProducingExecutor(
+       @Qualifier("post-new-job.event.producer")
+          IMessageProducer<ProduceEvents.PostNewJobEvent> postNewJobEventMessageProducer,
+       @Qualifier("accept-student-application.event.producer")
+          IMessageProducer<ProduceEvents.AcceptStudentApplicationEvent> acceptStudentApplicationEventIMessageProducer,
+       @Qualifier("remove-student-application.event.producer")
+          IMessageProducer<ProduceEvents.RemoveStudentApplicationEvent> removeStudentApplicationEventIMessageProducer,
+       @Qualifier("delete-job.event.producer")
+          IMessageProducer<ProduceEvents.DeleteJobEvent> deleteJobEventMessageProducer) {
+
         this.postNewJobEventMessageProducer = postNewJobEventMessageProducer;
         this.acceptStudentApplicationEventMessageProducer = acceptStudentApplicationEventIMessageProducer;
         this.removeStudentApplicationEventMessageProducer = removeStudentApplicationEventIMessageProducer;
@@ -25,7 +34,7 @@ public class ProducingExecutor {
         postNewJobEventMessageProducer.send(event);
     }
 
-    public void produceAcceptStudentApplicationEvent(ProduceEvents.AcceptStudentApplicationEvent event){
+    public void produceAcceptStudentApplicationEvent(ProduceEvents.AcceptStudentApplicationEvent event) {
         acceptStudentApplicationEventMessageProducer.send(event);
     }
 

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@Component(value = "remove-student-application.event.producer")
 public class RemoveStudentApplicationEventProducer implements IMessageProducer<ProduceEvents.RemoveStudentApplicationEvent> {
 
     private final KafkaTemplate<String, Object> kafkaTemplate;

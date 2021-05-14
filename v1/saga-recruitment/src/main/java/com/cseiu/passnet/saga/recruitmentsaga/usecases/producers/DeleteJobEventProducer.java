@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-@Component(value = "delete-job-event-producer")
+@Component(value = "delete-job.event.producer")
 public class DeleteJobEventProducer implements IMessageProducer<ProduceEvents.DeleteJobEvent>{
 
     private final KafkaTemplate<String, DeleteJobEventAvro> kafkaTemplate;

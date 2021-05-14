@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component(value = "accept-student-application-event-producer")
+@Component(value = "accept-student-application.event.producer")
 public class AcceptStudentApplicationEventProducer implements IMessageProducer<ProduceEvents.AcceptStudentApplicationEvent>{
     private final KafkaTemplate<String, Object> kafkaTemplate;
     private final AvroEventConverter avroEventConverter;

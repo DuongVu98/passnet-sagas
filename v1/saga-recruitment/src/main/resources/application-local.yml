@@ -21,6 +21,8 @@ spring:
         accept-student-application-event: passnet.event.AcceptStudentApplicationEvent
         remove-student-application-event: passnet.event.RemoveStudentApplicationEvent
         delete-job-event: passnet.event.DeleteJobEvent
+      consume:
+        success-response: passnet.response.Success
 grpc:
   port: 6565
   main-service:
