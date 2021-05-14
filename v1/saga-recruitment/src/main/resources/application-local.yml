@@ -1,14 +1,26 @@
 spring:
   kafka:
-    producer:
-      bootstrap-servers: http://20.69.120.200:9092
-      topics:
-        post-new-job-event: post-new-job-event
-        accept-student-application-event: accept-student-application-event
-        remove-student-application-event: remove-student-application-event
-        delete-job-event: delete-job-event
+    bootstrap-servers:
+      - http://20.69.120.200:9092
     properties:
-      schema-registry-url: http://20.69.120.200:8081
+      schema.registry.url: http://20.69.120.200:8081
+      specific.avro.reader: true
+    consumer:
+      group-id: recruitment_saga_group_id
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+    template:
+      default-topic:
+    topics:
+      produce:
+        post-new-job-event: passnet.event.PostNewJobEvent
+        accept-student-application-event: passnet.event.AcceptStudentApplicationEvent
+        remove-student-application-event: passnet.event.RemoveStudentApplicationEvent
+        delete-job-event: passnet.event.DeleteJobEvent
 grpc:
   port: 6565
   main-service:

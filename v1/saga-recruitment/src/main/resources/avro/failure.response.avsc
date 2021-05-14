@@ -1,0 +1,17 @@
+{
+  "type": "record",
+  "namespace": "com.cse.iu.passnet.saga.avro",
+  "name": "FailureResponse",
+  "fields": [
+    {
+      "name": "service_name",
+      "type": "string",
+      "doc": "Service name"
+    },
+    {
+      "name": "event_id",
+      "type": "string",
+      "doc": "Event ID"
+    }
+  ]
+}

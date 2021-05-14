@@ -25,41 +25,41 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfiguration {
 
-    @Value("${spring.kafka.producer.bootstrap-servers}")
-    private String bootstrapServer;
+//    @Value("${spring.kafka.producer.bootstrap-servers}")
+//    private String bootstrapServer;
+//
+//    @Value("${spring.kafka.properties.schema-registry-url}")
+//    private String schemaRegistryUrl;
+//
+//    private Map<String, Object> configProps() {
+//        Map<String, Object> configProps = new HashMap<>();
+//
+//        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
+//        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+//        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
+//        configProps.put("schema.registry.url", schemaRegistryUrl);
+//        configProps.put("value.subject.name.strategy", TopicRecordNameStrategy.class.getName());
+//
+//        return configProps;
+//    }
 
-    @Value("${spring.kafka.properties.schema-registry-url}")
-    private String schemaRegistryUrl;
-
-    private Map<String, Object> configProps() {
-        Map<String, Object> configProps = new HashMap<>();
-
-        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
-        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
-        configProps.put("schema.registry.url", schemaRegistryUrl);
-        configProps.put("value.subject.name.strategy", TopicRecordNameStrategy.class.getName());
-
-        return configProps;
-    }
-
-    @Bean(value = "post-new-job")
-    public KafkaTemplate<String, PostNewJobEventAvro> postNewJobEventAvroKafkaTemplate() {
-        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
-    }
-
-    @Bean(value = "accept-student-application")
-    public KafkaTemplate<String, AcceptStudentApplicationEventAvro> acceptStudentApplicationEventAvroKafkaTemplate() {
-        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
-    }
-
-    @Bean(value = "remove-student-application")
-    public KafkaTemplate<String, RemoveStudentApplicationEventAvro> removeStudentApplicationEventAvroKafkaTemplate() {
-        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
-    }
-
-    @Bean(value = "delete-job")
-    public KafkaTemplate<String, DeleteJobEventAvro> deleteJobEventAvroKafkaTemplate() {
-        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
-    }
+//    @Bean(value = "post-new-job")
+//    public KafkaTemplate<String, PostNewJobEventAvro> postNewJobEventAvroKafkaTemplate() {
+//        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
+//    }
+//
+//    @Bean(value = "accept-student-application")
+//    public KafkaTemplate<String, AcceptStudentApplicationEventAvro> acceptStudentApplicationEventAvroKafkaTemplate() {
+//        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
+//    }
+//
+//    @Bean(value = "remove-student-application")
+//    public KafkaTemplate<String, RemoveStudentApplicationEventAvro> removeStudentApplicationEventAvroKafkaTemplate() {
+//        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
+//    }
+//
+//    @Bean(value = "delete-job")
+//    public KafkaTemplate<String, DeleteJobEventAvro> deleteJobEventAvroKafkaTemplate() {
+//        return new KafkaTemplate<>(new DefaultKafkaProducerFactory<>(configProps()));
+//    }
 }
