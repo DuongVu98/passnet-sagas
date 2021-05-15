@@ -12,14 +12,14 @@ import org.springframework.stereotype.Component;
 @Component(value = "delete-job.event.producer")
 public class DeleteJobEventProducer implements IMessageProducer<ProduceEvents.DeleteJobEvent>{
 
-    private final KafkaTemplate<String, DeleteJobEventAvro> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
     private final AvroEventConverter avroEventConverter;
 
-    @Value("${spring.kafka.producer.topics.delete-job-event}")
+    @Value("${spring.kafka.topics.delete-job-event}")
     private String topic;
 
     @Autowired
-    public DeleteJobEventProducer(@Qualifier("delete-job")KafkaTemplate<String, DeleteJobEventAvro> kafkaTemplate, AvroEventConverter avroEventConverter) {
+    public DeleteJobEventProducer(KafkaTemplate<String, Object> kafkaTemplate, AvroEventConverter avroEventConverter) {
         this.kafkaTemplate = kafkaTemplate;
         this.avroEventConverter = avroEventConverter;
     }

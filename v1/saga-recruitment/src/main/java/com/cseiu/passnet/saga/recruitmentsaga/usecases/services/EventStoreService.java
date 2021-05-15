@@ -1,5 +1,6 @@
 package com.cseiu.passnet.saga.recruitmentsaga.usecases.services;
 
+import com.cseiu.passnet.saga.recruitmentsaga.domain.exceptions.EventNotFoundException;
 import com.cseiu.passnet.saga.recruitmentsaga.domain.models.SagaOrchestrator;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,13 @@ public class EventStoreService {
     }
 
     public void removeEvent(String eventId){
+        this.checkEventExist(eventId);
         this.eventStore.remove(eventId);
+    }
+
+    private void checkEventExist(String eventId) {
+        if(!this.eventStore.contains(eventId)) {
+            throw new EventNotFoundException(String.format("event with eventId %s not found", eventId));
+        }
     }
 }

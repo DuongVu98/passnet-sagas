@@ -21,7 +21,7 @@ public class AcceptStudentApplicationEventProducer implements IMessageProducer<P
     private final AvroEventConverter avroEventConverter;
     private final SagaStoreService sagaStoreService;
 
-    @Value("${spring.kafka.topics.produce.accept-student-application-event}")
+    @Value("${spring.kafka.topics.accept-student-application-event}")
     private String topic;
 
     @Autowired

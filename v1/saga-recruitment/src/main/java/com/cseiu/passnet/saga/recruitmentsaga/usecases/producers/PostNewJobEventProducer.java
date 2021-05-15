@@ -12,14 +12,14 @@ import org.springframework.stereotype.Component;
 @Component("post-new-job.event.producer")
 public class PostNewJobEventProducer implements IMessageProducer<ProduceEvents.PostNewJobEvent> {
 
-    private final KafkaTemplate<String, PostNewJobEventAvro> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
     private final AvroEventConverter avroEventConverter;
 
-    @Value("${spring.kafka.producer.topics.post-new-job-event}")
+    @Value("${spring.kafka.topics.post-new-job-event}")
     private String topic;
 
     @Autowired
-    public PostNewJobEventProducer(@Qualifier("post-new-job") KafkaTemplate<String, PostNewJobEventAvro> kafkaTemplate, AvroEventConverter avroEventConverter) {
+    public PostNewJobEventProducer(KafkaTemplate<String, Object> kafkaTemplate, AvroEventConverter avroEventConverter) {
         this.kafkaTemplate = kafkaTemplate;
         this.avroEventConverter = avroEventConverter;
     }

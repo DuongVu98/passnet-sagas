@@ -21,7 +21,7 @@ public class RemoveStudentApplicationEventProducer implements IMessageProducer<P
     private final AvroEventConverter avroEventConverter;
     private final SagaStoreService sagaStoreService;
 
-    @Value("${spring.kafka.producer.topics.remove-student-application-event}")
+    @Value("${spring.kafka.topics.remove-student-application-event}")
     private String topic;
 
     @Autowired

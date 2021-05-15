@@ -1,5 +1,6 @@
 package com.cseiu.passnet.saga.recruitmentsaga.usecases.services;
 
+import com.cseiu.passnet.saga.recruitmentsaga.domain.exceptions.SagaNotFoundException;
 import com.cseiu.passnet.saga.recruitmentsaga.domain.models.SagaOrchestrator;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +16,18 @@ public class SagaStoreService {
     }
 
     public SagaOrchestrator findSaga(String eventId) {
+        this.checkSagaExist(eventId);
         return this.sagaStore.get(eventId);
     }
 
     public void removeSaga(String eventId){
+        this.checkSagaExist(eventId);
         this.sagaStore.remove(eventId);
+    }
+
+    private void checkSagaExist(String eventId) {
+        if (!this.sagaStore.containsKey(eventId)) {
+            throw new SagaNotFoundException(String.format("Saga with eventId %s not found", eventId));
+        }
     }
 }
