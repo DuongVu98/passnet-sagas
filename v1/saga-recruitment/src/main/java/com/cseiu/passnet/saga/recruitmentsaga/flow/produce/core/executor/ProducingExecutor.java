@@ -22,7 +22,8 @@ public class ProducingExecutor {
        @Qualifier("remove-student-application.event.producer")
           IMessageProducer<ProduceEvents.RemoveStudentApplicationEvent> removeStudentApplicationEventIMessageProducer,
        @Qualifier("delete-job.event.producer")
-          IMessageProducer<ProduceEvents.DeleteJobEvent> deleteJobEventMessageProducer) {
+          IMessageProducer<ProduceEvents.DeleteJobEvent> deleteJobEventMessageProducer
+    ) {
 
         this.postNewJobEventMessageProducer = postNewJobEventMessageProducer;
         this.acceptStudentApplicationEventMessageProducer = acceptStudentApplicationEventIMessageProducer;

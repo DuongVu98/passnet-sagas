@@ -1,9 +1,6 @@
 package com.cseiu.passnet.saga.recruitmentsaga.common.services;
 
-import com.cse.iu.passnet.saga.avro.AcceptStudentApplicationEventAvro;
-import com.cse.iu.passnet.saga.avro.DeleteJobEventAvro;
-import com.cse.iu.passnet.saga.avro.PostNewJobEventAvro;
-import com.cse.iu.passnet.saga.avro.RemoveStudentApplicationEventAvro;
+import com.cse.iu.passnet.saga.avro.*;
 import com.cseiu.passnet.saga.recruitmentsaga.ProduceEvents;
 import org.springframework.stereotype.Service;
 
