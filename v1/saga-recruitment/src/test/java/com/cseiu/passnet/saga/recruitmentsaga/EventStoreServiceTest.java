@@ -1,7 +1,7 @@
 package com.cseiu.passnet.saga.recruitmentsaga;
 
-import com.cseiu.passnet.saga.recruitmentsaga.domain.exceptions.EventNotFoundException;
-import com.cseiu.passnet.saga.recruitmentsaga.usecases.services.EventStoreService;
+import com.cseiu.passnet.saga.recruitmentsaga.common.exceptions.EventNotFoundException;
+import com.cseiu.passnet.saga.recruitmentsaga.common.services.EventStoreService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

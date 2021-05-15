@@ -1,10 +1,10 @@
 package com.cseiu.passnet.saga.recruitmentsaga;
 
-import com.cseiu.passnet.saga.recruitmentsaga.domain.exceptions.SagaNotFoundException;
-import com.cseiu.passnet.saga.recruitmentsaga.domain.models.DomainService;
-import com.cseiu.passnet.saga.recruitmentsaga.domain.models.DomainServiceNames;
-import com.cseiu.passnet.saga.recruitmentsaga.domain.models.SagaOrchestrator;
-import com.cseiu.passnet.saga.recruitmentsaga.usecases.services.SagaStoreService;
+import com.cseiu.passnet.saga.recruitmentsaga.common.exceptions.SagaNotFoundException;
+import com.cseiu.passnet.saga.recruitmentsaga.common.models.DomainService;
+import com.cseiu.passnet.saga.recruitmentsaga.common.models.DomainServiceNames;
+import com.cseiu.passnet.saga.recruitmentsaga.common.models.SagaOrchestrator;
+import com.cseiu.passnet.saga.recruitmentsaga.common.services.SagaStoreService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
