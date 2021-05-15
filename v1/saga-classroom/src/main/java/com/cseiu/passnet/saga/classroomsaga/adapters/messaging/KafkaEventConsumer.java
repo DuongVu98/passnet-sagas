@@ -32,25 +32,25 @@ public class KafkaEventConsumer {
     @Qualifier("delete-job-event-consumer")
     private IMessageConsumer<DeleteJobEventAvro> deleteJobEventConsumer;
 
-    @KafkaListener(topics = "post-new-job-event")
+    @KafkaListener(topics = "${spring.kafka.topics.post-new-job-event}")
     public void listenPostNewJobEvent(@Payload PostNewJobEventAvro event){
         log.info("log record --> {}", event);
         postNewJobEventConsumer.consume(event);
     }
 
-    @KafkaListener(topics = "accept-student-application-event")
+    @KafkaListener(topics = "${spring.kafka.topics.accept-student-application-event}")
     public void listenAcceptStudentApplicationEvent(@Payload AcceptStudentApplicationEventAvro event){
         log.debug("log record --> {}", event);
         acceptStudentApplicationEventConsumer.consume(event);
     }
 
-    @KafkaListener(topics = "remove-student-application-event")
+    @KafkaListener(topics = "${spring.kafka.topics.remove-student-application-event}")
     public void listenRemoveStudentApplicationEvent(@Payload RemoveStudentApplicationEventAvro event){
         log.debug("log record --> {}", event);
         removeStudentApplicationEventConsumer.consume(event);
     }
 
-    @KafkaListener(topics = "delete-job-event")
+    @KafkaListener(topics = "${spring.kafka.topics.delete-job-event}")
     public void listenDeleteJobEvent(@Payload DeleteJobEventAvro event){
         log.debug("log record --> {}", event);
         deleteJobEventConsumer.consume(event);

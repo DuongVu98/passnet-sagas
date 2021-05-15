@@ -10,13 +10,13 @@ import org.lognet.springboot.grpc.GRpcService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @GRpcService
-@Slf4j(topic = "[EventProducer]")
-public class EventProducer extends EventProducerGrpc.EventProducerImplBase {
+@Slf4j(topic = "[EventProducerGateway]")
+public class EventProducerGateway extends EventProducerGrpc.EventProducerImplBase {
 
     private final ProducingExecutor producingExecutor;
 
     @Autowired
-    public EventProducer(ProducingExecutor producingExecutor) {
+    public EventProducerGateway(ProducingExecutor producingExecutor) {
         this.producingExecutor = producingExecutor;
     }
 

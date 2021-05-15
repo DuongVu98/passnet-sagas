@@ -1,4 +1,4 @@
-package com.cseiu.passnet.saga.recruitmentsaga.adapters.messaging;
+package com.cseiu.passnet.saga.classroomsaga.adapters.messaging;
 
 import com.cse.iu.passnet.saga.avro.FailureResponse;
 import com.cse.iu.passnet.saga.avro.SuccessResponse;

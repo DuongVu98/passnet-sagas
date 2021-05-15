@@ -16,13 +16,12 @@ spring:
     template:
       default-topic:
     topics:
-      produce:
-        post-new-job-event: passnet.event.PostNewJobEvent
-        accept-student-application-event: passnet.event.AcceptStudentApplicationEvent
-        remove-student-application-event: passnet.event.RemoveStudentApplicationEvent
-        delete-job-event: passnet.event.DeleteJobEvent
-      consume:
-        success-response: passnet.response.Success
+      post-new-job-event: passnet.event.PostNewJobEvent
+      accept-student-application-event: passnet.event.AcceptStudentApplicationEvent
+      remove-student-application-event: passnet.event.RemoveStudentApplicationEvent
+      delete-job-event: passnet.event.DeleteJobEvent
+      success-response: passnet.response.Success
+      failure-response: passnet.response.Failure
 grpc:
   port: 6565
   main-service:
