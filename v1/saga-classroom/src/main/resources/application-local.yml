@@ -16,10 +16,8 @@ spring:
     template:
       default-topic:
     topics:
-      post-new-job-event: passnet.event.PostNewJobEvent
       accept-student-application-event: passnet.event.AcceptStudentApplicationEvent
       remove-student-application-event: passnet.event.RemoveStudentApplicationEvent
-      delete-job-event: passnet.event.DeleteJobEvent
       success-response: passnet.response.Success
       failure-response: passnet.response.Failure
 grpc:
@@ -27,3 +25,6 @@ grpc:
   main-service:
     host: localhost
     port: 50051
+constants:
+  success-message: SUCCESS
+  failure-message: FAILURE

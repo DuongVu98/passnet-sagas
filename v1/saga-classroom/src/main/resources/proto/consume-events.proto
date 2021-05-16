@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_package = "com.cseiu.passnet.saga.classroomsaga";
+
+package consumeEvents;
+
+service EventConsumer {
+  rpc ConsumeAcceptStudentApplicationEvent (AcceptStudentApplicationEvent) returns (ServiceResponse) {}
+  rpc ConsumeRemoveStudentApplicationEvent (RemoveStudentApplicationEvent) returns (ServiceResponse) {}
+}
+
+service CompensatingExecutor {
+  rpc rollback(EventId) returns (ServiceResponse) {}
+}
+
+message ServiceResponse {
+  string message = 1;
+}
+
+message AcceptStudentApplicationEvent {
+  string jobId = 1;
+  string taId = 2;
+}
+
+message RemoveStudentApplicationEvent {
+  string jobId = 1;
+  string taId = 2;
+}
+
+message EventId {
+  string eventId = 1;
+}

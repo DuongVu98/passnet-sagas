@@ -13,6 +13,11 @@
             "name": "job_id",
             "type": "string",
             "doc": "Job ID"
+        },
+        {
+            "name": "event_id",
+            "type": "string",
+            "doc": "Event ID"
         }
     ]
 }

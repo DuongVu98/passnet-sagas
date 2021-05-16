@@ -12,6 +12,11 @@
             "name": "ta_id",
             "type": "string",
             "doc": "TA ID"
+        },
+        {
+            "name": "event_id",
+            "type": "string",
+            "doc": "Event ID"
         }
     ]
 }

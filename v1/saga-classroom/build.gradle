@@ -26,13 +26,13 @@ repositories {
 sourceSets {
     main {
         proto {
-            srcDir 'src/main/proto'
+            srcDir 'src/main/resources/proto'
         }
         java {
             srcDirs 'src/main/java'
-            srcDirs 'generated-sources/main/java'
-            srcDirs 'generated-sources/main/grpc'
-            srcDirs 'build/generated/avro'
+            srcDirs 'src/main/generated/avro'
+            srcDirs 'src/main/generated/main/grpc'
+            srcDirs 'src/main/generated/main/java'
         }
     }
 }
@@ -51,7 +51,7 @@ protobuf {
             grpc {}
         }
     }
-    generateProtoTasks.generatedFilesBaseDir = 'generated-sources'
+    generateProtoTasks.generatedFilesBaseDir = 'src/main/generated'
 }
 
 avro {
@@ -79,7 +79,7 @@ dependencies {
 
 generateAvroJava {
     source("src/main/resources/avro")
-    outputDir = file("build/generated/avro")
+    outputDir = file("src/main/generated/avro")
 }
 
 bootJar {
