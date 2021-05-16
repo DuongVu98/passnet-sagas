@@ -46,5 +46,4 @@ public class AcceptStudentApplicationEventProducer implements IMessageProducer<P
            .build();
         this.sagaStoreService.storeSaga(orchestrator);
     }
-
 }
