@@ -2525,7 +2525,7 @@ public final class ConsumeEvents {
       "e\"\000\022v\n$ConsumeRemoveStudentApplicationEv" +
       "ent\022,.consumeEvents.RemoveStudentApplica" +
       "tionEvent\032\036.consumeEvents.ServiceRespons" +
-      "e\"\0002\\\n\024CompensatingExecutor\022D\n\010rollback\022" +
+      "e\"\0002\\\n\024CompensatingExecutor\022D\n\010Rollback\022" +
       "\026.consumeEvents.EventId\032\036.consumeEvents." +
       "ServiceResponse\"\000B&\n$com.cseiu.passnet.s" +
       "aga.classroomsagab\006proto3"

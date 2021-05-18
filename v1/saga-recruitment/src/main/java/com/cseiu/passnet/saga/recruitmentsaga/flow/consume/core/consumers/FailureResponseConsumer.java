@@ -1,4 +1,4 @@
-package com.cseiu.passnet.saga.recruitmentsaga.flow.consume.core.handler;
+package com.cseiu.passnet.saga.recruitmentsaga.flow.consume.core.consumers;
 
 import com.cse.iu.passnet.saga.avro.FailureResponse;
 import com.cseiu.passnet.saga.recruitmentsaga.CompensatingExecutorGrpc;

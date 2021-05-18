@@ -10,7 +10,7 @@ service EventConsumer {
 }
 
 service CompensatingExecutor {
-  rpc rollback(EventId) returns (ServiceResponse) {}
+  rpc Rollback(EventId) returns (ServiceResponse) {}
 }
 
 message ServiceResponse {

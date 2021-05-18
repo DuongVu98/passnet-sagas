@@ -31,7 +31,7 @@ public final class CompensatingExecutorGrpc {
       com.cseiu.passnet.saga.classroomsaga.ConsumeEvents.ServiceResponse> getRollbackMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "rollback",
+      fullMethodName = SERVICE_NAME + '/' + "Rollback",
       requestType = com.cseiu.passnet.saga.classroomsaga.ConsumeEvents.EventId.class,
       responseType = com.cseiu.passnet.saga.classroomsaga.ConsumeEvents.ServiceResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
@@ -45,13 +45,13 @@ public final class CompensatingExecutorGrpc {
               io.grpc.MethodDescriptor.<com.cseiu.passnet.saga.classroomsaga.ConsumeEvents.EventId, com.cseiu.passnet.saga.classroomsaga.ConsumeEvents.ServiceResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "consumeEvents.CompensatingExecutor", "rollback"))
+                  "consumeEvents.CompensatingExecutor", "Rollback"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.cseiu.passnet.saga.classroomsaga.ConsumeEvents.EventId.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.cseiu.passnet.saga.classroomsaga.ConsumeEvents.ServiceResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new CompensatingExecutorMethodDescriptorSupplier("rollback"))
+                  .setSchemaDescriptor(new CompensatingExecutorMethodDescriptorSupplier("Rollback"))
                   .build();
           }
         }
