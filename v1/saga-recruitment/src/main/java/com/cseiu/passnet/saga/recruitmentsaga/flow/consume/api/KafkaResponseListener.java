@@ -10,7 +10,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
-@Slf4j(topic = "[KafkaResponseConsumer]")
+@Slf4j(topic = "[KafkaResponseListener]")
 public class KafkaResponseListener {
 
     private final ConsumingExecutor consumingExecutor;
@@ -23,12 +23,12 @@ public class KafkaResponseListener {
     @KafkaListener(topics = "${spring.kafka.topics.success-response}")
     public void onResponse(@Payload SuccessResponse successResponse) {
         log.info("event [{}] from service [{}] success", successResponse.getEventId(), successResponse.getServiceName());
-        this.consumingExecutor.consumeSuccessResponse(successResponse);
+        this.consumingExecutor.consume(successResponse);
     }
 
     @KafkaListener(topics = "${spring.kafka.topics.failure-response}")
     public void onResponse(@Payload FailureResponse failureResponse) {
-        log.info("event [{}] from service [{}] success", failureResponse.getEventId(), failureResponse.getServiceName());
-        this.consumingExecutor.consumeFailureResponse(failureResponse);
+        log.info("event [{}] from service [{}] failure", failureResponse.getEventId(), failureResponse.getServiceName());
+        this.consumingExecutor.consume(failureResponse);
     }
 }

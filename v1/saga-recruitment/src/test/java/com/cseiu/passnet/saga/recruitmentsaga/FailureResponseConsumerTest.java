@@ -4,7 +4,7 @@ import com.cse.iu.passnet.saga.avro.FailureResponse;
 import com.cseiu.passnet.saga.recruitmentsaga.common.models.DomainService;
 import com.cseiu.passnet.saga.recruitmentsaga.common.models.DomainServiceNames;
 import com.cseiu.passnet.saga.recruitmentsaga.common.models.SagaOrchestrator;
-import com.cseiu.passnet.saga.recruitmentsaga.flow.consume.core.handler.FailureResponseConsumer;
+import com.cseiu.passnet.saga.recruitmentsaga.flow.consume.core.consumers.FailureResponseConsumer;
 import com.cseiu.passnet.saga.recruitmentsaga.common.services.EventStoreService;
 import com.cseiu.passnet.saga.recruitmentsaga.common.services.SagaStoreService;
 import org.junit.jupiter.api.Assertions;

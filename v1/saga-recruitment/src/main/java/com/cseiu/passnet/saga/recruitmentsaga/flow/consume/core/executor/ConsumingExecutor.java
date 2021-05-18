@@ -2,7 +2,7 @@ package com.cseiu.passnet.saga.recruitmentsaga.flow.consume.core.executor;
 
 import com.cse.iu.passnet.saga.avro.FailureResponse;
 import com.cse.iu.passnet.saga.avro.SuccessResponse;
-import com.cseiu.passnet.saga.recruitmentsaga.flow.consume.core.handler.IMessageConsumer;
+import com.cseiu.passnet.saga.recruitmentsaga.flow.consume.core.consumers.IMessageConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,11 +17,11 @@ public class ConsumingExecutor {
         this.failureResponseConsumer = failureResponseConsumer;
     }
 
-    public void consumeSuccessResponse(SuccessResponse response){
+    public void consume(SuccessResponse response){
         this.successResponseConsumer.consume(response);
     }
 
-    public void consumeFailureResponse(FailureResponse response){
+    public void consume(FailureResponse response){
         this.failureResponseConsumer.consume(response);
     }
 }
