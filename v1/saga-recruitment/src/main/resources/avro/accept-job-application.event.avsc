@@ -3,7 +3,6 @@
     "namespace": "com.cse.iu.passnet.saga.avro",
     "name": "AcceptStudentApplicationEventAvro",
     "fields": [
-
         {
             "name": "job_id",
             "type": "string",

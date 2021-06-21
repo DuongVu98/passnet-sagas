@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: passnet-user-saga
+  config:
+    import: optional:configserver:http://localhost:9999
+grpc:
+  port: 6061

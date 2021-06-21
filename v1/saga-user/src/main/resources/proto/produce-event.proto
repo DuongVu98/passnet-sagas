@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "github.com/DuongVu98/passnet-authentication/proto";
+
+service EventProducer {
+    rpc ProduceUserRegisteredEvent(UserRegisteredEvent) returns (SagaResponse) {}
+}
+
+message SagaResponse {
+    string message = 1;
+}
+
+message UserRegisteredEvent {
+    string eventId = 1;
+    string uid = 2;
+    string username = 3;
+    string email = 4;
+    string firstName = 5;
+    string lastName = 6;
+}
