@@ -2,9 +2,11 @@ plugins {
     id 'org.springframework.boot' version '2.4.7'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id "com.commercehub.gradle.plugin.avro" version "0.99.99"
+    id "com.github.davidmc24.gradle.plugin.avro-base" version "1.2.0"
     id "com.google.protobuf" version "0.8.16"
 }
+
+import com.github.davidmc24.gradle.plugin.avro.GenerateAvroJavaTask
 
 group = 'com.cseiu.passnet.saga.usersaga'
 version = '0.0.1-SNAPSHOT'
@@ -15,7 +17,6 @@ configurations {
         extendsFrom annotationProcessor
     }
 }
-
 repositories {
     mavenCentral()
     maven {
@@ -85,11 +86,13 @@ dependencyManagement {
     }
 }
 
-generateAvroJava {
+def generateAvro = tasks.register("generateAvro", GenerateAvroJavaTask) {
     source("src/main/resources/avro")
     outputDir = file("src/main/generated/avro")
 }
-
+tasks.named("compileJava").configure {
+    source(generateAvro)
+}
 test {
     useJUnitPlatform()
 }

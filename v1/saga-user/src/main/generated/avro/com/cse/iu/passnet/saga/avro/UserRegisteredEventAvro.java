@@ -5,14 +5,72 @@
  */
 package com.cse.iu.passnet.saga.avro;
 
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.SchemaStore;
 
-@SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 3526580592772467489L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserRegisteredEventAvro\",\"namespace\":\"com.cse.iu.passnet.saga.avro\",\"fields\":[{\"name\":\"user_id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"User ID\"},{\"name\":\"username\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Username\"},{\"name\":\"email\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Email\"},{\"name\":\"first_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"First name\"},{\"name\":\"last_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Last name\"},{\"name\":\"event_id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Event ID\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
+
+  private static SpecificData MODEL$ = new SpecificData();
+
+  private static final BinaryMessageEncoder<UserRegisteredEventAvro> ENCODER =
+      new BinaryMessageEncoder<UserRegisteredEventAvro>(MODEL$, SCHEMA$);
+
+  private static final BinaryMessageDecoder<UserRegisteredEventAvro> DECODER =
+      new BinaryMessageDecoder<UserRegisteredEventAvro>(MODEL$, SCHEMA$);
+
+  /**
+   * Return the BinaryMessageEncoder instance used by this class.
+   * @return the message encoder used by this class
+   */
+  public static BinaryMessageEncoder<UserRegisteredEventAvro> getEncoder() {
+    return ENCODER;
+  }
+
+  /**
+   * Return the BinaryMessageDecoder instance used by this class.
+   * @return the message decoder used by this class
+   */
+  public static BinaryMessageDecoder<UserRegisteredEventAvro> getDecoder() {
+    return DECODER;
+  }
+
+  /**
+   * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
+   * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+   */
+  public static BinaryMessageDecoder<UserRegisteredEventAvro> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<UserRegisteredEventAvro>(MODEL$, SCHEMA$, resolver);
+  }
+
+  /**
+   * Serializes this UserRegisteredEventAvro to a ByteBuffer.
+   * @return a buffer holding the serialized data for this instance
+   * @throws java.io.IOException if this instance could not be serialized
+   */
+  public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+    return ENCODER.encode(this);
+  }
+
+  /**
+   * Deserializes a UserRegisteredEventAvro from a ByteBuffer.
+   * @param b a byte buffer holding serialized data for an instance of this class
+   * @return a UserRegisteredEventAvro instance decoded from the given buffer
+   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
+   */
+  public static UserRegisteredEventAvro fromByteBuffer(
+      java.nio.ByteBuffer b) throws java.io.IOException {
+    return DECODER.decode(b);
+  }
+
   /** User ID */
    private java.lang.String user_id;
   /** Username */
@@ -51,6 +109,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
     this.event_id = event_id;
   }
 
+  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
@@ -61,7 +120,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
     case 3: return first_name;
     case 4: return last_name;
     case 5: return event_id;
-    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
+    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
@@ -69,13 +128,13 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: user_id = (java.lang.String)value$; break;
-    case 1: username = (java.lang.String)value$; break;
-    case 2: email = (java.lang.String)value$; break;
-    case 3: first_name = (java.lang.String)value$; break;
-    case 4: last_name = (java.lang.String)value$; break;
-    case 5: event_id = (java.lang.String)value$; break;
-    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
+    case 0: user_id = value$ != null ? value$.toString() : null; break;
+    case 1: username = value$ != null ? value$.toString() : null; break;
+    case 2: email = value$ != null ? value$.toString() : null; break;
+    case 3: first_name = value$ != null ? value$.toString() : null; break;
+    case 4: last_name = value$ != null ? value$.toString() : null; break;
+    case 5: event_id = value$ != null ? value$.toString() : null; break;
+    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
@@ -88,6 +147,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
   }
 
 
+
   /**
    * Gets the value of the 'username' field.
    * @return Username
@@ -95,6 +155,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
   public java.lang.String getUsername() {
     return username;
   }
+
 
 
   /**
@@ -106,6 +167,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
   }
 
 
+
   /**
    * Gets the value of the 'first_name' field.
    * @return First name
@@ -113,6 +175,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
   public java.lang.String getFirstName() {
     return first_name;
   }
+
 
 
   /**
@@ -124,6 +187,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
   }
 
 
+
   /**
    * Gets the value of the 'event_id' field.
    * @return Event ID
@@ -131,6 +195,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
   public java.lang.String getEventId() {
     return event_id;
   }
+
 
 
   /**
@@ -147,7 +212,11 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
    * @return A new UserRegisteredEventAvro RecordBuilder
    */
   public static com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder newBuilder(com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder other) {
-    return new com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder(other);
+    if (other == null) {
+      return new com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder();
+    } else {
+      return new com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder(other);
+    }
   }
 
   /**
@@ -156,12 +225,17 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
    * @return A new UserRegisteredEventAvro RecordBuilder
    */
   public static com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder newBuilder(com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro other) {
-    return new com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder(other);
+    if (other == null) {
+      return new com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder();
+    } else {
+      return new com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder(other);
+    }
   }
 
   /**
    * RecordBuilder for UserRegisteredEventAvro instances.
    */
+  @org.apache.avro.specific.AvroGenerated
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<UserRegisteredEventAvro>
     implements org.apache.avro.data.RecordBuilder<UserRegisteredEventAvro> {
 
@@ -191,27 +265,27 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
       super(other);
       if (isValidValue(fields()[0], other.user_id)) {
         this.user_id = data().deepCopy(fields()[0].schema(), other.user_id);
-        fieldSetFlags()[0] = true;
+        fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
       if (isValidValue(fields()[1], other.username)) {
         this.username = data().deepCopy(fields()[1].schema(), other.username);
-        fieldSetFlags()[1] = true;
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
       if (isValidValue(fields()[2], other.email)) {
         this.email = data().deepCopy(fields()[2].schema(), other.email);
-        fieldSetFlags()[2] = true;
+        fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
       if (isValidValue(fields()[3], other.first_name)) {
         this.first_name = data().deepCopy(fields()[3].schema(), other.first_name);
-        fieldSetFlags()[3] = true;
+        fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
       if (isValidValue(fields()[4], other.last_name)) {
         this.last_name = data().deepCopy(fields()[4].schema(), other.last_name);
-        fieldSetFlags()[4] = true;
+        fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
       if (isValidValue(fields()[5], other.event_id)) {
         this.event_id = data().deepCopy(fields()[5].schema(), other.event_id);
-        fieldSetFlags()[5] = true;
+        fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
     }
 
@@ -220,7 +294,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
      * @param other The existing instance to copy.
      */
     private Builder(com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro other) {
-            super(SCHEMA$);
+      super(SCHEMA$);
       if (isValidValue(fields()[0], other.user_id)) {
         this.user_id = data().deepCopy(fields()[0].schema(), other.user_id);
         fieldSetFlags()[0] = true;
@@ -255,6 +329,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
     public java.lang.String getUserId() {
       return user_id;
     }
+
 
     /**
       * Sets the value of the 'user_id' field.
@@ -299,6 +374,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
       return username;
     }
 
+
     /**
       * Sets the value of the 'username' field.
       * Username
@@ -341,6 +417,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
     public java.lang.String getEmail() {
       return email;
     }
+
 
     /**
       * Sets the value of the 'email' field.
@@ -385,6 +462,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
       return first_name;
     }
 
+
     /**
       * Sets the value of the 'first_name' field.
       * First name
@@ -427,6 +505,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
     public java.lang.String getLastName() {
       return last_name;
     }
+
 
     /**
       * Sets the value of the 'last_name' field.
@@ -471,6 +550,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
       return event_id;
     }
 
+
     /**
       * Sets the value of the 'event_id' field.
       * Event ID
@@ -506,6 +586,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public UserRegisteredEventAvro build() {
       try {
         UserRegisteredEventAvro record = new UserRegisteredEventAvro();
@@ -516,26 +597,109 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
         record.last_name = fieldSetFlags()[4] ? this.last_name : (java.lang.String) defaultValue(fields()[4]);
         record.event_id = fieldSetFlags()[5] ? this.event_id : (java.lang.String) defaultValue(fields()[5]);
         return record;
-      } catch (Exception e) {
+      } catch (org.apache.avro.AvroMissingFieldException e) {
+        throw e;
+      } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
     }
   }
 
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumWriter<UserRegisteredEventAvro>
+    WRITER$ = (org.apache.avro.io.DatumWriter<UserRegisteredEventAvro>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
     WRITER$.write(this, SpecificData.getEncoder(out));
   }
 
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumReader<UserRegisteredEventAvro>
+    READER$ = (org.apache.avro.io.DatumReader<UserRegisteredEventAvro>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
+  @Override protected boolean hasCustomCoders() { return true; }
+
+  @Override public void customEncode(org.apache.avro.io.Encoder out)
+    throws java.io.IOException
+  {
+    out.writeString(this.user_id);
+
+    out.writeString(this.username);
+
+    out.writeString(this.email);
+
+    out.writeString(this.first_name);
+
+    out.writeString(this.last_name);
+
+    out.writeString(this.event_id);
+
+  }
+
+  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
+    throws java.io.IOException
+  {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.user_id = in.readString();
+
+      this.username = in.readString();
+
+      this.email = in.readString();
+
+      this.first_name = in.readString();
+
+      this.last_name = in.readString();
+
+      this.event_id = in.readString();
+
+    } else {
+      for (int i = 0; i < 6; i++) {
+        switch (fieldOrder[i].pos()) {
+        case 0:
+          this.user_id = in.readString();
+          break;
+
+        case 1:
+          this.username = in.readString();
+          break;
+
+        case 2:
+          this.email = in.readString();
+          break;
+
+        case 3:
+          this.first_name = in.readString();
+          break;
+
+        case 4:
+          this.last_name = in.readString();
+          break;
+
+        case 5:
+          this.event_id = in.readString();
+          break;
+
+        default:
+          throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
