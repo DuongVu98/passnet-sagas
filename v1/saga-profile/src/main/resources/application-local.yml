@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: passnet-profile-saga
+  config:
+    import: optional:configserver:http://localhost:9999
+grpc:
+  client:
+    profile-service:
+      address: 'static://127.0.0.1:8082'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+  server:
+    port: 6162

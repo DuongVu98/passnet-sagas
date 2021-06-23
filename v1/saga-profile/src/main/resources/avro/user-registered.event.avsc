@@ -1,0 +1,37 @@
+{
+  "type": "record",
+  "namespace": "com.cse.iu.passnet.saga.avro",
+  "name": "UserRegisteredEventAvro",
+  "fields": [
+    {
+      "name": "user_id",
+      "type": "string",
+      "doc": "User ID"
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "doc": "Username"
+    },
+    {
+      "name": "email",
+      "type": "string",
+      "doc": "Email"
+    },
+    {
+      "name": "first_name",
+      "type": "string",
+      "doc": "First name"
+    },
+    {
+      "name": "last_name",
+      "type": "string",
+      "doc": "Last name"
+    },
+    {
+      "name": "event_id",
+      "type": "string",
+      "doc": "Event ID"
+    }
+  ]
+}
