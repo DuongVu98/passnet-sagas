@@ -24,7 +24,7 @@ public class AcceptStudentApplicationEventConsumer implements IMessageConsumer<A
 
     @Override
     public void consume(AcceptStudentApplicationEventAvro avro) {
-        ConsumeEvents.AcceptStudentApplicationEvent event = protobufEventConvertor.buildAcceptStudentApplicationEventProtobuf(avro);
+        var event = protobufEventConvertor.buildAcceptStudentApplicationEventProtobuf(avro);
         ConsumeEvents.ServiceResponse response = eventConsumerBlockingStub.consumeAcceptStudentApplicationEvent(event);
 
         this.serviceResponseHandler.handle(response, avro.getEventId());
