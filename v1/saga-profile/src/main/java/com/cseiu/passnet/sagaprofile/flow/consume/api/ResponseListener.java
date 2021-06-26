@@ -15,7 +15,6 @@ public class ResponseListener {
 
     }
 
-
     @KafkaListener(topics = "${config.messaging.topics.failure-response}")
     public void listen(FailureResponse response){
 

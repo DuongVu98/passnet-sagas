@@ -1,12 +1,17 @@
+server:
+  port: 8082
 spring:
   application:
     name: passnet-profile-saga
   config:
     import: optional:configserver:http://localhost:9999
+  kafka:
+    consumer:
+      group-id: passnet_profile_saga_group
 grpc:
   client:
     profile-service:
-      address: 'static://127.0.0.1:8082'
+      address: 'static://127.0.0.1:7072'
       enableKeepAlive: true
       keepAliveWithoutCalls: true
       negotiationType: plaintext
