@@ -40,7 +40,7 @@ public class UserRegisteredEventProducer implements IMessageProducer<ProduceEven
         SagaOrchestrator orchestrator = SagaOrchestrator.builder()
            .eventId(eventId)
            .domainServices(List.of(
-              new DomainService(DomainServiceNames.CLASSROOM_SERVICE)
+              new DomainService(DomainServiceNames.PROFILE_SERVICE)
            ))
            .build();
         this.sagaStoreService.storeSaga(orchestrator);

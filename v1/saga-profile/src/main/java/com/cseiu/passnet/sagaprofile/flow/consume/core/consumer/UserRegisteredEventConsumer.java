@@ -11,10 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserRegisteredEventConsumer implements IMessageConsumer<UserRegisteredEventAvro>{
 
-    @GrpcClient("profile-service")
-    private EventConsumerRpcGrpc.EventConsumerRpcBlockingStub eventConsumerStub;
     private final ProtoBufEventConvertor protoBufEventConvertor;
     private final ServiceResponseHandler serviceResponseHandler;
+
+    @GrpcClient("profile-service")
+    private EventConsumerRpcGrpc.EventConsumerRpcBlockingStub eventConsumerStub;
 
     @Autowired
     public UserRegisteredEventConsumer(ProtoBufEventConvertor protoBufEventConvertor, ServiceResponseHandler serviceResponseHandler) {

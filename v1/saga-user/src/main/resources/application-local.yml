@@ -4,4 +4,11 @@ spring:
   config:
     import: optional:configserver:http://localhost:9999
 grpc:
-  port: 6161
+  client:
+    user-service:
+      address: 'static://localhost:7071'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+  server:
+    port: 6161
