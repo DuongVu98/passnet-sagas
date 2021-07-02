@@ -11,4 +11,4 @@ grpc:
       keepAliveWithoutCalls: true
       negotiationType: plaintext
   server:
-    port: 6161
+    port: 6160

@@ -11,6 +11,7 @@ import io.grpc.reflection.v1alpha.ServiceResponse;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -33,12 +34,17 @@ public class FailureResponseConsumer implements IMessageConsumer<FailureResponse
         try {
             this.sagaStoreService.removeSaga(failureResponse.getEventId());
             log.info("removed saga");
+            log.info("compensate event [{}]", failureResponse.getEventId());
             var response = this.compensatingExecutorStub.rollback(ConsumeEvents.EventIdProtobuf.newBuilder().setEventId(failureResponse.getEventId()).build());
+            log.info("response after compensate: [{}]", response.getMessage());
         } catch (SagaNotFoundException exception) {
             try {
                 log.info("saga not found");
                 this.eventStoreService.removeEvent(failureResponse.getEventId());
+                log.info("removed event");
+                log.info("compensate event [{}]", failureResponse.getEventId());
                 var response = this.compensatingExecutorStub.rollback(ConsumeEvents.EventIdProtobuf.newBuilder().setEventId(failureResponse.getEventId()).build());
+                log.info("response after compensate: [{}]", response.getMessage());
             } catch (EventNotFoundException e) {
                 log.info("No Saga and Event found. This service does not consume event [{}]", failureResponse.getEventId());
             }
