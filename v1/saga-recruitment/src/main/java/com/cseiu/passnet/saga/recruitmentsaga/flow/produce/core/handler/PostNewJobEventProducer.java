@@ -1,6 +1,5 @@
 package com.cseiu.passnet.saga.recruitmentsaga.flow.produce.core.handler;
 
-import com.cse.iu.passnet.saga.avro.PostNewJobEventAvro;
 import com.cseiu.passnet.saga.recruitmentsaga.ProduceEvents;
 import com.cseiu.passnet.saga.recruitmentsaga.common.services.AvroEventConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ public class PostNewJobEventProducer implements IMessageProducer<ProduceEvents.P
     private final KafkaTemplate<String, Object> kafkaTemplate;
     private final AvroEventConverter avroEventConverter;
 
-    @Value("${spring.kafka.topics.post-new-job-event}")
+    @Value("${config.messaging.topics.post-new-job-event}")
     private String topic;
 
     @Autowired
@@ -25,7 +24,7 @@ public class PostNewJobEventProducer implements IMessageProducer<ProduceEvents.P
 
     @Override
     public void send(ProduceEvents.PostNewJobEvent postNewJobEvent) {
-        PostNewJobEventAvro event = avroEventConverter.buildPostNewJobEventAvro(postNewJobEvent);
+        var event = avroEventConverter.buildPostNewJobEventAvro(postNewJobEvent);
         kafkaTemplate.send(topic, event);
     }
 }

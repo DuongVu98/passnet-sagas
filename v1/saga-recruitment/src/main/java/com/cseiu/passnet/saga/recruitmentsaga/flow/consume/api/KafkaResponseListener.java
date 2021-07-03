@@ -20,13 +20,13 @@ public class KafkaResponseListener {
         this.consumingExecutor = consumingExecutor;
     }
 
-    @KafkaListener(topics = "${spring.kafka.topics.success-response}")
+    @KafkaListener(topics = "${config.messaging.topics.success-response}")
     public void onResponse(@Payload SuccessResponse successResponse) {
         log.info("event [{}] from service [{}] success", successResponse.getEventId(), successResponse.getServiceName());
         this.consumingExecutor.consume(successResponse);
     }
 
-    @KafkaListener(topics = "${spring.kafka.topics.failure-response}")
+    @KafkaListener(topics = "${config.messaging.topics.failure-response}")
     public void onResponse(@Payload FailureResponse failureResponse) {
         log.info("event [{}] from service [{}] failure", failureResponse.getEventId(), failureResponse.getServiceName());
         this.consumingExecutor.consume(failureResponse);

@@ -3,7 +3,6 @@ package com.cseiu.passnet.saga.recruitmentsaga.flow.produce.api;
 import com.cseiu.passnet.saga.recruitmentsaga.EventProducerGrpc;
 import com.cseiu.passnet.saga.recruitmentsaga.ProduceEvents;
 import com.cseiu.passnet.saga.recruitmentsaga.flow.produce.core.executor.ProducingExecutor;
-
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;

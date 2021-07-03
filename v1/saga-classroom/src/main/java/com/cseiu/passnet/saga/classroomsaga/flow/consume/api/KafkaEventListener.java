@@ -22,13 +22,13 @@ public class KafkaEventListener {
         this.consumingExecutor = consumingExecutor;
     }
 
-    @KafkaListener(topics = "${spring.kafka.topics.accept-student-application-event}")
+    @KafkaListener(topics = "${config.messaging.topics.accept-student-application-event}")
     public void listenAcceptStudentApplicationEvent(@Payload AcceptStudentApplicationEventAvro event){
         log.debug("log record --> {}", event);
         consumingExecutor.consume(event);
     }
 
-    @KafkaListener(topics = "${spring.kafka.topics.remove-student-application-event}")
+    @KafkaListener(topics = "${config.messaging.topics.remove-student-application-event}")
     public void listenRemoveStudentApplicationEvent(@Payload RemoveStudentApplicationEventAvro event){
         log.debug("log record --> {}", event);
         consumingExecutor.consume(event);

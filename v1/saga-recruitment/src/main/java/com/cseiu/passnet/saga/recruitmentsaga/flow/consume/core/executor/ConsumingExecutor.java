@@ -17,11 +17,11 @@ public class ConsumingExecutor {
         this.failureResponseConsumer = failureResponseConsumer;
     }
 
-    public void consume(SuccessResponse response){
+    public void consume(SuccessResponse response) {
         this.successResponseConsumer.consume(response);
     }
 
-    public void consume(FailureResponse response){
+    public void consume(FailureResponse response) {
         this.failureResponseConsumer.consume(response);
     }
 }

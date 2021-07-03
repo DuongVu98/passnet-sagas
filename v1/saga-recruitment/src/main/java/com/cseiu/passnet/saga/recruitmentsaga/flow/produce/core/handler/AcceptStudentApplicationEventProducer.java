@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component(value = "accept-student-application.event.producer")
-public class AcceptStudentApplicationEventProducer implements IMessageProducer<ProduceEvents.AcceptStudentApplicationEvent>{
+public class AcceptStudentApplicationEventProducer implements IMessageProducer<ProduceEvents.AcceptStudentApplicationEvent> {
     private final KafkaTemplate<String, Object> kafkaTemplate;
     private final AvroEventConverter avroEventConverter;
     private final SagaStoreService sagaStoreService;
 
-    @Value("${spring.kafka.topics.accept-student-application-event}")
+    @Value("${config.messaging.topics.accept-student-application-event}")
     private String topic;
 
     @Autowired

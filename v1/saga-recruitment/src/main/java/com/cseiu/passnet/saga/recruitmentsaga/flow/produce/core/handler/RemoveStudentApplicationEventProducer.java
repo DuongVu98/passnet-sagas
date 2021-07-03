@@ -1,6 +1,5 @@
 package com.cseiu.passnet.saga.recruitmentsaga.flow.produce.core.handler;
 
-import com.cse.iu.passnet.saga.avro.RemoveStudentApplicationEventAvro;
 import com.cseiu.passnet.saga.recruitmentsaga.ProduceEvents;
 import com.cseiu.passnet.saga.recruitmentsaga.common.models.DomainService;
 import com.cseiu.passnet.saga.recruitmentsaga.common.models.DomainServiceNames;
@@ -21,7 +20,7 @@ public class RemoveStudentApplicationEventProducer implements IMessageProducer<P
     private final AvroEventConverter avroEventConverter;
     private final SagaStoreService sagaStoreService;
 
-    @Value("${spring.kafka.topics.remove-student-application-event}")
+    @Value("${config.messaging.topics.remove-student-application-event}")
     private String topic;
 
     @Autowired
@@ -34,7 +33,7 @@ public class RemoveStudentApplicationEventProducer implements IMessageProducer<P
     @Override
     public void send(ProduceEvents.RemoveStudentApplicationEvent removeStudentApplicationEvent) {
         this.storeSaga(removeStudentApplicationEvent.getEventId());
-        RemoveStudentApplicationEventAvro event = avroEventConverter.buildRemoveStudentApplicationEventAvro(removeStudentApplicationEvent);
+        var event = avroEventConverter.buildRemoveStudentApplicationEventAvro(removeStudentApplicationEvent);
         kafkaTemplate.send(topic, event);
     }
 
