@@ -5,6 +5,7 @@ import com.cseiu.passnet.saga.classroomsaga.ConsumeEvents;
 import com.cseiu.passnet.saga.classroomsaga.EventConsumerGrpc;
 import com.cseiu.passnet.saga.classroomsaga.common.services.ProtobufEventConvertor;
 import com.cseiu.passnet.saga.classroomsaga.flow.consume.core.handler.ServiceResponseHandler;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,13 +13,14 @@ import org.springframework.stereotype.Component;
 public class AcceptStudentApplicationEventConsumer implements IMessageConsumer<AcceptStudentApplicationEventAvro>{
 
     private final ProtobufEventConvertor protobufEventConvertor;
-    private final EventConsumerGrpc.EventConsumerBlockingStub eventConsumerBlockingStub;
     private final ServiceResponseHandler serviceResponseHandler;
 
+    @GrpcClient("classroom-service")
+    private EventConsumerGrpc.EventConsumerBlockingStub eventConsumerBlockingStub;
+
     @Autowired
-    public AcceptStudentApplicationEventConsumer(ProtobufEventConvertor protobufEventConvertor, EventConsumerGrpc.EventConsumerBlockingStub eventConsumerBlockingStub, ServiceResponseHandler serviceResponseHandler) {
+    public AcceptStudentApplicationEventConsumer(ProtobufEventConvertor protobufEventConvertor, ServiceResponseHandler serviceResponseHandler) {
         this.protobufEventConvertor = protobufEventConvertor;
-        this.eventConsumerBlockingStub = eventConsumerBlockingStub;
         this.serviceResponseHandler = serviceResponseHandler;
     }
 

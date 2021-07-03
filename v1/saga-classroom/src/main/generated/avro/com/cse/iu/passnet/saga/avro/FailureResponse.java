@@ -5,14 +5,72 @@
  */
 package com.cse.iu.passnet.saga.avro;
 
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.SchemaStore;
 
-@SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 7571084872815655313L;
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"FailureResponse\",\"namespace\":\"com.cse.iu.passnet.saga.avro\",\"fields\":[{\"name\":\"service_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Service name\"},{\"name\":\"event_id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Event ID\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
+
+  private static SpecificData MODEL$ = new SpecificData();
+
+  private static final BinaryMessageEncoder<FailureResponse> ENCODER =
+      new BinaryMessageEncoder<FailureResponse>(MODEL$, SCHEMA$);
+
+  private static final BinaryMessageDecoder<FailureResponse> DECODER =
+      new BinaryMessageDecoder<FailureResponse>(MODEL$, SCHEMA$);
+
+  /**
+   * Return the BinaryMessageEncoder instance used by this class.
+   * @return the message encoder used by this class
+   */
+  public static BinaryMessageEncoder<FailureResponse> getEncoder() {
+    return ENCODER;
+  }
+
+  /**
+   * Return the BinaryMessageDecoder instance used by this class.
+   * @return the message decoder used by this class
+   */
+  public static BinaryMessageDecoder<FailureResponse> getDecoder() {
+    return DECODER;
+  }
+
+  /**
+   * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
+   * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
+   */
+  public static BinaryMessageDecoder<FailureResponse> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<FailureResponse>(MODEL$, SCHEMA$, resolver);
+  }
+
+  /**
+   * Serializes this FailureResponse to a ByteBuffer.
+   * @return a buffer holding the serialized data for this instance
+   * @throws java.io.IOException if this instance could not be serialized
+   */
+  public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
+    return ENCODER.encode(this);
+  }
+
+  /**
+   * Deserializes a FailureResponse from a ByteBuffer.
+   * @param b a byte buffer holding serialized data for an instance of this class
+   * @return a FailureResponse instance decoded from the given buffer
+   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
+   */
+  public static FailureResponse fromByteBuffer(
+      java.nio.ByteBuffer b) throws java.io.IOException {
+    return DECODER.decode(b);
+  }
+
   /** Service name */
    private java.lang.String service_name;
   /** Event ID */
@@ -35,13 +93,14 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
     this.event_id = event_id;
   }
 
+  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return service_name;
     case 1: return event_id;
-    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
+    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
@@ -49,9 +108,9 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: service_name = (java.lang.String)value$; break;
-    case 1: event_id = (java.lang.String)value$; break;
-    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
+    case 0: service_name = value$ != null ? value$.toString() : null; break;
+    case 1: event_id = value$ != null ? value$.toString() : null; break;
+    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
@@ -64,6 +123,7 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
   }
 
 
+
   /**
    * Gets the value of the 'event_id' field.
    * @return Event ID
@@ -71,6 +131,7 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
   public java.lang.String getEventId() {
     return event_id;
   }
+
 
 
   /**
@@ -87,7 +148,11 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
    * @return A new FailureResponse RecordBuilder
    */
   public static com.cse.iu.passnet.saga.avro.FailureResponse.Builder newBuilder(com.cse.iu.passnet.saga.avro.FailureResponse.Builder other) {
-    return new com.cse.iu.passnet.saga.avro.FailureResponse.Builder(other);
+    if (other == null) {
+      return new com.cse.iu.passnet.saga.avro.FailureResponse.Builder();
+    } else {
+      return new com.cse.iu.passnet.saga.avro.FailureResponse.Builder(other);
+    }
   }
 
   /**
@@ -96,12 +161,17 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
    * @return A new FailureResponse RecordBuilder
    */
   public static com.cse.iu.passnet.saga.avro.FailureResponse.Builder newBuilder(com.cse.iu.passnet.saga.avro.FailureResponse other) {
-    return new com.cse.iu.passnet.saga.avro.FailureResponse.Builder(other);
+    if (other == null) {
+      return new com.cse.iu.passnet.saga.avro.FailureResponse.Builder();
+    } else {
+      return new com.cse.iu.passnet.saga.avro.FailureResponse.Builder(other);
+    }
   }
 
   /**
    * RecordBuilder for FailureResponse instances.
    */
+  @org.apache.avro.specific.AvroGenerated
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<FailureResponse>
     implements org.apache.avro.data.RecordBuilder<FailureResponse> {
 
@@ -123,11 +193,11 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
       super(other);
       if (isValidValue(fields()[0], other.service_name)) {
         this.service_name = data().deepCopy(fields()[0].schema(), other.service_name);
-        fieldSetFlags()[0] = true;
+        fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
       if (isValidValue(fields()[1], other.event_id)) {
         this.event_id = data().deepCopy(fields()[1].schema(), other.event_id);
-        fieldSetFlags()[1] = true;
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
     }
 
@@ -136,7 +206,7 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
      * @param other The existing instance to copy.
      */
     private Builder(com.cse.iu.passnet.saga.avro.FailureResponse other) {
-            super(SCHEMA$);
+      super(SCHEMA$);
       if (isValidValue(fields()[0], other.service_name)) {
         this.service_name = data().deepCopy(fields()[0].schema(), other.service_name);
         fieldSetFlags()[0] = true;
@@ -155,6 +225,7 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
     public java.lang.String getServiceName() {
       return service_name;
     }
+
 
     /**
       * Sets the value of the 'service_name' field.
@@ -199,6 +270,7 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
       return event_id;
     }
 
+
     /**
       * Sets the value of the 'event_id' field.
       * Event ID
@@ -234,32 +306,84 @@ public class FailureResponse extends org.apache.avro.specific.SpecificRecordBase
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public FailureResponse build() {
       try {
         FailureResponse record = new FailureResponse();
         record.service_name = fieldSetFlags()[0] ? this.service_name : (java.lang.String) defaultValue(fields()[0]);
         record.event_id = fieldSetFlags()[1] ? this.event_id : (java.lang.String) defaultValue(fields()[1]);
         return record;
-      } catch (Exception e) {
+      } catch (org.apache.avro.AvroMissingFieldException e) {
+        throw e;
+      } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
     }
   }
 
-  private static final org.apache.avro.io.DatumWriter
-    WRITER$ = new org.apache.avro.specific.SpecificDatumWriter(SCHEMA$);
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumWriter<FailureResponse>
+    WRITER$ = (org.apache.avro.io.DatumWriter<FailureResponse>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
     WRITER$.write(this, SpecificData.getEncoder(out));
   }
 
-  private static final org.apache.avro.io.DatumReader
-    READER$ = new org.apache.avro.specific.SpecificDatumReader(SCHEMA$);
+  @SuppressWarnings("unchecked")
+  private static final org.apache.avro.io.DatumReader<FailureResponse>
+    READER$ = (org.apache.avro.io.DatumReader<FailureResponse>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
+  @Override protected boolean hasCustomCoders() { return true; }
+
+  @Override public void customEncode(org.apache.avro.io.Encoder out)
+    throws java.io.IOException
+  {
+    out.writeString(this.service_name);
+
+    out.writeString(this.event_id);
+
+  }
+
+  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
+    throws java.io.IOException
+  {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.service_name = in.readString();
+
+      this.event_id = in.readString();
+
+    } else {
+      for (int i = 0; i < 2; i++) {
+        switch (fieldOrder[i].pos()) {
+        case 0:
+          this.service_name = in.readString();
+          break;
+
+        case 1:
+          this.event_id = in.readString();
+          break;
+
+        default:
+          throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
