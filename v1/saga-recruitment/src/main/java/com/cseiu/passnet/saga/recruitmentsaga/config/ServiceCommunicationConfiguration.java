@@ -16,13 +16,13 @@ public class ServiceCommunicationConfiguration {
     @Value("${grpc.main-service.port}")
     private int servicePort;
 
-    @Bean
+//    @Bean
     public EventConsumerGrpc.EventConsumerBlockingStub eventProducerBlockingStub() {
         ManagedChannel channel = ManagedChannelBuilder.forAddress(serviceHost, servicePort).usePlaintext().build();
         return EventConsumerGrpc.newBlockingStub(channel);
     }
 
-    @Bean
+//    @Bean
     public CompensatingExecutorGrpc.CompensatingExecutorBlockingStub compensatingExecutorBlockingStub() {
         ManagedChannel channel = ManagedChannelBuilder.forAddress(serviceHost, servicePort).usePlaintext().build();
         return CompensatingExecutorGrpc.newBlockingStub(channel);

@@ -7,16 +7,14 @@ import com.cseiu.passnet.saga.usersaga.common.exceptions.EventNotFoundException;
 import com.cseiu.passnet.saga.usersaga.common.exceptions.SagaNotFoundException;
 import com.cseiu.passnet.saga.usersaga.common.services.EventStoreService;
 import com.cseiu.passnet.saga.usersaga.common.services.SagaStoreService;
-import io.grpc.reflection.v1alpha.ServiceResponse;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j(topic = "FailureResponseConsumer")
-public class FailureResponseConsumer implements IMessageConsumer<FailureResponse>{
+public class FailureResponseConsumer implements IMessageConsumer<FailureResponse> {
     private final SagaStoreService sagaStoreService;
     private final EventStoreService eventStoreService;
 

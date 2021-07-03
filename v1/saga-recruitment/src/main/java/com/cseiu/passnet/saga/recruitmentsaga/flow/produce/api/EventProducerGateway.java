@@ -6,10 +6,10 @@ import com.cseiu.passnet.saga.recruitmentsaga.flow.produce.core.executor.Produci
 
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
-import org.lognet.springboot.grpc.GRpcService;
+import net.devh.boot.grpc.server.service.GrpcService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@GRpcService
+@GrpcService
 @Slf4j(topic = "[EventProducerGateway]")
 public class EventProducerGateway extends EventProducerGrpc.EventProducerImplBase {
 

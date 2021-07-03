@@ -13,17 +13,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceResponseHandler {
 
+    private static String SERVICE_NAME = DomainServiceNames.CLASSROOM_SERVICE.name();
+
     private final EventStoreService eventStoreService;
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    @Value("${constants.success-message}")
+    @Value("${config.constants.success-message}")
     private String SUCCESS_MESSAGE;
-    @Value("${constants.failure-message}")
+    @Value("${config.constants.failure-message}")
     private String FAILURE_MESSAGE;
 
-    @Value("${spring.kafka.topics.success-response}")
+    @Value("${config.messaging.topics.success-response}")
     private String successResponseTopic;
-    @Value("${spring.kafka.topics.failure-response}")
+    @Value("${config.messaging.topics.failure-response}")
     private String failureResponseTopic;
 
     @Autowired
@@ -36,10 +38,10 @@ public class ServiceResponseHandler {
         if (response.getMessage().equals(SUCCESS_MESSAGE)) {
             this.eventStoreService.storeEvent(eventId);
 
-            SuccessResponse successResponse = SuccessResponse.newBuilder().setServiceName(DomainServiceNames.CLASSROOM_SERVICE.name()).setEventId(eventId).build();
+            var successResponse = SuccessResponse.newBuilder().setServiceName(DomainServiceNames.CLASSROOM_SERVICE.name()).setEventId(eventId).build();
             this.kafkaTemplate.send(successResponseTopic, successResponse);
         } else if (response.getMessage().equals(FAILURE_MESSAGE)) {
-            FailureResponse failureResponse = FailureResponse.newBuilder().setServiceName(DomainServiceNames.CLASSROOM_SERVICE.name()).setEventId(eventId).build();
+            var failureResponse = FailureResponse.newBuilder().setServiceName(DomainServiceNames.CLASSROOM_SERVICE.name()).setEventId(eventId).build();
             this.kafkaTemplate.send(failureResponseTopic, failureResponse);
         }
     }

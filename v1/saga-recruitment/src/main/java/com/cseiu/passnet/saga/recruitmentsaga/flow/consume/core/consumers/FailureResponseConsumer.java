@@ -8,33 +8,36 @@ import com.cseiu.passnet.saga.recruitmentsaga.common.exceptions.SagaNotFoundExce
 import com.cseiu.passnet.saga.recruitmentsaga.common.services.EventStoreService;
 import com.cseiu.passnet.saga.recruitmentsaga.common.services.SagaStoreService;
 import lombok.extern.slf4j.Slf4j;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+@Component
 @Slf4j(topic = "[FailureResponseConsumer]")
-@Component(value = "failure.response.consumer")
 public class FailureResponseConsumer implements IMessageConsumer<FailureResponse> {
     private final SagaStoreService sagaStoreService;
     private final EventStoreService eventStoreService;
-    private final CompensatingExecutorGrpc.CompensatingExecutorBlockingStub compensatingExecutorBlockingStub;
+
+    @GrpcClient("recruitment-service")
+    private CompensatingExecutorGrpc.CompensatingExecutorBlockingStub compensatingExecutorBlockingStub;
 
     @Autowired
-    public FailureResponseConsumer(SagaStoreService sagaStoreService, EventStoreService eventStoreService, CompensatingExecutorGrpc.CompensatingExecutorBlockingStub compensatingExecutorBlockingStub) {
+    public FailureResponseConsumer(SagaStoreService sagaStoreService, EventStoreService eventStoreService) {
         this.sagaStoreService = sagaStoreService;
         this.eventStoreService = eventStoreService;
-        this.compensatingExecutorBlockingStub = compensatingExecutorBlockingStub;
     }
+
 
     @Override
     public void consume(FailureResponse failureResponse) {
 
         try {
             this.sagaStoreService.removeSaga(failureResponse.getEventId());
-            ConsumeEvents.ServiceResponse response = this.compensatingExecutorBlockingStub.rollback(ConsumeEvents.EventId.newBuilder().setEventId(failureResponse.getEventId()).build());
+            var response = this.compensatingExecutorBlockingStub.rollback(ConsumeEvents.EventId.newBuilder().setEventId(failureResponse.getEventId()).build());
         } catch (SagaNotFoundException exception) {
             try {
                 this.eventStoreService.removeEvent(failureResponse.getEventId());
-                ConsumeEvents.ServiceResponse response = this.compensatingExecutorBlockingStub.rollback(ConsumeEvents.EventId.newBuilder().setEventId(failureResponse.getEventId()).build());
+                var response = this.compensatingExecutorBlockingStub.rollback(ConsumeEvents.EventId.newBuilder().setEventId(failureResponse.getEventId()).build());
             } catch (EventNotFoundException e) {
                 log.info("No Saga and Event found. This service does not consume event [{}]", failureResponse.getEventId());
             }
