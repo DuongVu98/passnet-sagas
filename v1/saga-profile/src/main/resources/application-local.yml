@@ -1,8 +1,6 @@
 spring:
   application:
     name: passnet-profile-saga
-  config:
-    import: optional:configserver:http://localhost:9999
   kafka:
     consumer:
       group-id: passnet_profile_saga_group

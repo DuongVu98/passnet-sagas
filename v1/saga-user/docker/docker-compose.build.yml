@@ -1,0 +1,8 @@
+version: "3.8"
+
+services:
+  passnet-user-saga:
+    image: tony16019/passnet-user-saga:latest
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile

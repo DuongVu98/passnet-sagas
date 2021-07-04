@@ -6,9 +6,9 @@ spring:
 grpc:
   client:
     user-service:
-      address: 'static://localhost:7071'
+      address: 'static://${USER_SERVICE_GRPC_HOST}:${USER_SERVICE_GRPC_PORT}'
       enableKeepAlive: true
       keepAliveWithoutCalls: true
       negotiationType: plaintext
   server:
-    port: 6160
+    port: ${USER_SAGA_PORT}
