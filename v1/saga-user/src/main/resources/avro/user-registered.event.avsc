@@ -29,6 +29,11 @@
       "doc": "Last name"
     },
     {
+      "name": "profile_role",
+      "type": "string",
+      "doc": "Profile role"
+    },
+    {
       "name": "event_id",
       "type": "string",
       "doc": "Event ID"

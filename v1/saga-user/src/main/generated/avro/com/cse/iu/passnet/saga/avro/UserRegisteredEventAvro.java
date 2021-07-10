@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3526580592772467489L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserRegisteredEventAvro\",\"namespace\":\"com.cse.iu.passnet.saga.avro\",\"fields\":[{\"name\":\"user_id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"User ID\"},{\"name\":\"username\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Username\"},{\"name\":\"email\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Email\"},{\"name\":\"first_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"First name\"},{\"name\":\"last_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Last name\"},{\"name\":\"event_id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Event ID\"}]}");
+  private static final long serialVersionUID = 2168192143231355220L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserRegisteredEventAvro\",\"namespace\":\"com.cse.iu.passnet.saga.avro\",\"fields\":[{\"name\":\"user_id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"User ID\"},{\"name\":\"username\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Username\"},{\"name\":\"email\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Email\"},{\"name\":\"first_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"First name\"},{\"name\":\"last_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Last name\"},{\"name\":\"profile_role\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Profile role\"},{\"name\":\"event_id\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Event ID\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -81,6 +81,8 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
    private java.lang.String first_name;
   /** Last name */
    private java.lang.String last_name;
+  /** Profile role */
+   private java.lang.String profile_role;
   /** Event ID */
    private java.lang.String event_id;
 
@@ -98,14 +100,16 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
    * @param email Email
    * @param first_name First name
    * @param last_name Last name
+   * @param profile_role Profile role
    * @param event_id Event ID
    */
-  public UserRegisteredEventAvro(java.lang.String user_id, java.lang.String username, java.lang.String email, java.lang.String first_name, java.lang.String last_name, java.lang.String event_id) {
+  public UserRegisteredEventAvro(java.lang.String user_id, java.lang.String username, java.lang.String email, java.lang.String first_name, java.lang.String last_name, java.lang.String profile_role, java.lang.String event_id) {
     this.user_id = user_id;
     this.username = username;
     this.email = email;
     this.first_name = first_name;
     this.last_name = last_name;
+    this.profile_role = profile_role;
     this.event_id = event_id;
   }
 
@@ -119,7 +123,8 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
     case 2: return email;
     case 3: return first_name;
     case 4: return last_name;
-    case 5: return event_id;
+    case 5: return profile_role;
+    case 6: return event_id;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -133,7 +138,8 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
     case 2: email = value$ != null ? value$.toString() : null; break;
     case 3: first_name = value$ != null ? value$.toString() : null; break;
     case 4: last_name = value$ != null ? value$.toString() : null; break;
-    case 5: event_id = value$ != null ? value$.toString() : null; break;
+    case 5: profile_role = value$ != null ? value$.toString() : null; break;
+    case 6: event_id = value$ != null ? value$.toString() : null; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -184,6 +190,16 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
    */
   public java.lang.String getLastName() {
     return last_name;
+  }
+
+
+
+  /**
+   * Gets the value of the 'profile_role' field.
+   * @return Profile role
+   */
+  public java.lang.String getProfileRole() {
+    return profile_role;
   }
 
 
@@ -249,6 +265,8 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
     private java.lang.String first_name;
     /** Last name */
     private java.lang.String last_name;
+    /** Profile role */
+    private java.lang.String profile_role;
     /** Event ID */
     private java.lang.String event_id;
 
@@ -283,9 +301,13 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
         this.last_name = data().deepCopy(fields()[4].schema(), other.last_name);
         fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
-      if (isValidValue(fields()[5], other.event_id)) {
-        this.event_id = data().deepCopy(fields()[5].schema(), other.event_id);
+      if (isValidValue(fields()[5], other.profile_role)) {
+        this.profile_role = data().deepCopy(fields()[5].schema(), other.profile_role);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
+      }
+      if (isValidValue(fields()[6], other.event_id)) {
+        this.event_id = data().deepCopy(fields()[6].schema(), other.event_id);
+        fieldSetFlags()[6] = other.fieldSetFlags()[6];
       }
     }
 
@@ -315,9 +337,13 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
         this.last_name = data().deepCopy(fields()[4].schema(), other.last_name);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.event_id)) {
-        this.event_id = data().deepCopy(fields()[5].schema(), other.event_id);
+      if (isValidValue(fields()[5], other.profile_role)) {
+        this.profile_role = data().deepCopy(fields()[5].schema(), other.profile_role);
         fieldSetFlags()[5] = true;
+      }
+      if (isValidValue(fields()[6], other.event_id)) {
+        this.event_id = data().deepCopy(fields()[6].schema(), other.event_id);
+        fieldSetFlags()[6] = true;
       }
     }
 
@@ -542,6 +568,50 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
     }
 
     /**
+      * Gets the value of the 'profile_role' field.
+      * Profile role
+      * @return The value.
+      */
+    public java.lang.String getProfileRole() {
+      return profile_role;
+    }
+
+
+    /**
+      * Sets the value of the 'profile_role' field.
+      * Profile role
+      * @param value The value of 'profile_role'.
+      * @return This builder.
+      */
+    public com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder setProfileRole(java.lang.String value) {
+      validate(fields()[5], value);
+      this.profile_role = value;
+      fieldSetFlags()[5] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'profile_role' field has been set.
+      * Profile role
+      * @return True if the 'profile_role' field has been set, false otherwise.
+      */
+    public boolean hasProfileRole() {
+      return fieldSetFlags()[5];
+    }
+
+
+    /**
+      * Clears the value of the 'profile_role' field.
+      * Profile role
+      * @return This builder.
+      */
+    public com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder clearProfileRole() {
+      profile_role = null;
+      fieldSetFlags()[5] = false;
+      return this;
+    }
+
+    /**
       * Gets the value of the 'event_id' field.
       * Event ID
       * @return The value.
@@ -558,9 +628,9 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
       * @return This builder.
       */
     public com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder setEventId(java.lang.String value) {
-      validate(fields()[5], value);
+      validate(fields()[6], value);
       this.event_id = value;
-      fieldSetFlags()[5] = true;
+      fieldSetFlags()[6] = true;
       return this;
     }
 
@@ -570,7 +640,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
       * @return True if the 'event_id' field has been set, false otherwise.
       */
     public boolean hasEventId() {
-      return fieldSetFlags()[5];
+      return fieldSetFlags()[6];
     }
 
 
@@ -581,7 +651,7 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
       */
     public com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro.Builder clearEventId() {
       event_id = null;
-      fieldSetFlags()[5] = false;
+      fieldSetFlags()[6] = false;
       return this;
     }
 
@@ -595,7 +665,8 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
         record.email = fieldSetFlags()[2] ? this.email : (java.lang.String) defaultValue(fields()[2]);
         record.first_name = fieldSetFlags()[3] ? this.first_name : (java.lang.String) defaultValue(fields()[3]);
         record.last_name = fieldSetFlags()[4] ? this.last_name : (java.lang.String) defaultValue(fields()[4]);
-        record.event_id = fieldSetFlags()[5] ? this.event_id : (java.lang.String) defaultValue(fields()[5]);
+        record.profile_role = fieldSetFlags()[5] ? this.profile_role : (java.lang.String) defaultValue(fields()[5]);
+        record.event_id = fieldSetFlags()[6] ? this.event_id : (java.lang.String) defaultValue(fields()[6]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -638,6 +709,8 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
 
     out.writeString(this.last_name);
 
+    out.writeString(this.profile_role);
+
     out.writeString(this.event_id);
 
   }
@@ -657,10 +730,12 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
 
       this.last_name = in.readString();
 
+      this.profile_role = in.readString();
+
       this.event_id = in.readString();
 
     } else {
-      for (int i = 0; i < 6; i++) {
+      for (int i = 0; i < 7; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.user_id = in.readString();
@@ -683,6 +758,10 @@ public class UserRegisteredEventAvro extends org.apache.avro.specific.SpecificRe
           break;
 
         case 5:
+          this.profile_role = in.readString();
+          break;
+
+        case 6:
           this.event_id = in.readString();
           break;
 
