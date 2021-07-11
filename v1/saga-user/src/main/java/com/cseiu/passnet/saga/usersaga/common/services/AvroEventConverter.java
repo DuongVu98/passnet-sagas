@@ -14,6 +14,7 @@ public class AvroEventConverter {
            .setEmail(event.getEmail())
            .setFirstName(event.getFirstName())
            .setLastName(event.getLastName())
+           .setProfileRole(event.getProfileRole())
            .build();
     }
 }

@@ -626,6 +626,16 @@ public final class ProduceEvent {
      */
     com.google.protobuf.ByteString
         getLastNameBytes();
+
+    /**
+     * <code>string profileRole = 7;</code>
+     */
+    java.lang.String getProfileRole();
+    /**
+     * <code>string profileRole = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getProfileRoleBytes();
   }
   /**
    * Protobuf type {@code proto.UserRegisteredEvent}
@@ -646,6 +656,7 @@ public final class ProduceEvent {
       email_ = "";
       firstName_ = "";
       lastName_ = "";
+      profileRole_ = "";
     }
 
     @java.lang.Override
@@ -706,6 +717,12 @@ public final class ProduceEvent {
               java.lang.String s = input.readStringRequireUtf8();
 
               lastName_ = s;
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              profileRole_ = s;
               break;
             }
             default: {
@@ -944,6 +961,40 @@ public final class ProduceEvent {
       }
     }
 
+    public static final int PROFILEROLE_FIELD_NUMBER = 7;
+    private volatile java.lang.Object profileRole_;
+    /**
+     * <code>string profileRole = 7;</code>
+     */
+    public java.lang.String getProfileRole() {
+      java.lang.Object ref = profileRole_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        profileRole_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string profileRole = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getProfileRoleBytes() {
+      java.lang.Object ref = profileRole_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        profileRole_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -976,6 +1027,9 @@ public final class ProduceEvent {
       if (!getLastNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, lastName_);
       }
+      if (!getProfileRoleBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, profileRole_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1002,6 +1056,9 @@ public final class ProduceEvent {
       }
       if (!getLastNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, lastName_);
+      }
+      if (!getProfileRoleBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, profileRole_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1030,6 +1087,8 @@ public final class ProduceEvent {
           .equals(other.getFirstName())) return false;
       if (!getLastName()
           .equals(other.getLastName())) return false;
+      if (!getProfileRole()
+          .equals(other.getProfileRole())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1053,6 +1112,8 @@ public final class ProduceEvent {
       hash = (53 * hash) + getFirstName().hashCode();
       hash = (37 * hash) + LASTNAME_FIELD_NUMBER;
       hash = (53 * hash) + getLastName().hashCode();
+      hash = (37 * hash) + PROFILEROLE_FIELD_NUMBER;
+      hash = (53 * hash) + getProfileRole().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1198,6 +1259,8 @@ public final class ProduceEvent {
 
         lastName_ = "";
 
+        profileRole_ = "";
+
         return this;
       }
 
@@ -1230,6 +1293,7 @@ public final class ProduceEvent {
         result.email_ = email_;
         result.firstName_ = firstName_;
         result.lastName_ = lastName_;
+        result.profileRole_ = profileRole_;
         onBuilt();
         return result;
       }
@@ -1300,6 +1364,10 @@ public final class ProduceEvent {
         }
         if (!other.getLastName().isEmpty()) {
           lastName_ = other.lastName_;
+          onChanged();
+        }
+        if (!other.getProfileRole().isEmpty()) {
+          profileRole_ = other.profileRole_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -1744,6 +1812,75 @@ public final class ProduceEvent {
         onChanged();
         return this;
       }
+
+      private java.lang.Object profileRole_ = "";
+      /**
+       * <code>string profileRole = 7;</code>
+       */
+      public java.lang.String getProfileRole() {
+        java.lang.Object ref = profileRole_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          profileRole_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string profileRole = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getProfileRoleBytes() {
+        java.lang.Object ref = profileRole_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          profileRole_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string profileRole = 7;</code>
+       */
+      public Builder setProfileRole(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        profileRole_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string profileRole = 7;</code>
+       */
+      public Builder clearProfileRole() {
+        
+        profileRole_ = getDefaultInstance().getProfileRole();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string profileRole = 7;</code>
+       */
+      public Builder setProfileRoleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        profileRole_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1817,14 +1954,15 @@ public final class ProduceEvent {
   static {
     java.lang.String[] descriptorData = {
       "\n\023produce-event.proto\022\005proto\"\037\n\014SagaResp" +
-      "onse\022\017\n\007message\030\001 \001(\t\"y\n\023UserRegisteredE" +
-      "vent\022\017\n\007eventId\030\001 \001(\t\022\013\n\003uid\030\002 \001(\t\022\020\n\010us" +
-      "ername\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\022\021\n\tfirstName" +
-      "\030\005 \001(\t\022\020\n\010lastName\030\006 \001(\t2`\n\rEventProduce" +
-      "r\022O\n\032ProduceUserRegisteredEvent\022\032.proto." +
-      "UserRegisteredEvent\032\023.proto.SagaResponse" +
-      "\"\000B3Z1github.com/DuongVu98/passnet-authe" +
-      "ntication/protob\006proto3"
+      "onse\022\017\n\007message\030\001 \001(\t\"\216\001\n\023UserRegistered" +
+      "Event\022\017\n\007eventId\030\001 \001(\t\022\013\n\003uid\030\002 \001(\t\022\020\n\010u" +
+      "sername\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\022\021\n\tfirstNam" +
+      "e\030\005 \001(\t\022\020\n\010lastName\030\006 \001(\t\022\023\n\013profileRole" +
+      "\030\007 \001(\t2`\n\rEventProducer\022O\n\032ProduceUserRe" +
+      "gisteredEvent\022\032.proto.UserRegisteredEven" +
+      "t\032\023.proto.SagaResponse\"\000B3Z1github.com/D" +
+      "uongVu98/passnet-authentication/protob\006p" +
+      "roto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1849,7 +1987,7 @@ public final class ProduceEvent {
     internal_static_proto_UserRegisteredEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_UserRegisteredEvent_descriptor,
-        new java.lang.String[] { "EventId", "Uid", "Username", "Email", "FirstName", "LastName", });
+        new java.lang.String[] { "EventId", "Uid", "Username", "Email", "FirstName", "LastName", "ProfileRole", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
