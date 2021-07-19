@@ -29,6 +29,21 @@
       "doc": "Last name"
     },
     {
+      "name": "organization_id",
+      "type": "string",
+      "doc": "Organization ID"
+    },
+    {
+      "name": "department_id",
+      "type": "string",
+      "doc": "Department ID"
+    },
+    {
+      "name": "card_id",
+      "type": "string",
+      "doc": "Card ID"
+    },
+    {
       "name": "profile_role",
       "type": "string",
       "doc": "Profile role"

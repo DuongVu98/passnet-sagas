@@ -15,6 +15,9 @@ public class AvroEventConverter {
            .setFirstName(event.getFirstName())
            .setLastName(event.getLastName())
            .setProfileRole(event.getProfileRole())
+           .setOrganizationId(event.getOrganizationId())
+           .setDepartmentId(event.getDepartmentId())
+           .setCardId(event.getCardId())
            .build();
     }
 }
