@@ -578,14 +578,14 @@ public final class ConsumeEvents {
         getEventIdBytes();
 
     /**
-     * <code>string userId = 2;</code>
+     * <code>string uid = 2;</code>
      */
-    java.lang.String getUserId();
+    java.lang.String getUid();
     /**
-     * <code>string userId = 2;</code>
+     * <code>string uid = 2;</code>
      */
     com.google.protobuf.ByteString
-        getUserIdBytes();
+        getUidBytes();
 
     /**
      * <code>string username = 3;</code>
@@ -628,11 +628,41 @@ public final class ConsumeEvents {
         getLastNameBytes();
 
     /**
-     * <code>string profileRole = 7;</code>
+     * <code>string organizationId = 7;</code>
+     */
+    java.lang.String getOrganizationId();
+    /**
+     * <code>string organizationId = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getOrganizationIdBytes();
+
+    /**
+     * <code>string departmentId = 8;</code>
+     */
+    java.lang.String getDepartmentId();
+    /**
+     * <code>string departmentId = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getDepartmentIdBytes();
+
+    /**
+     * <code>string cardId = 9;</code>
+     */
+    java.lang.String getCardId();
+    /**
+     * <code>string cardId = 9;</code>
+     */
+    com.google.protobuf.ByteString
+        getCardIdBytes();
+
+    /**
+     * <code>string profileRole = 10;</code>
      */
     java.lang.String getProfileRole();
     /**
-     * <code>string profileRole = 7;</code>
+     * <code>string profileRole = 10;</code>
      */
     com.google.protobuf.ByteString
         getProfileRoleBytes();
@@ -651,11 +681,14 @@ public final class ConsumeEvents {
     }
     private UserRegisteredEventProtobuf() {
       eventId_ = "";
-      userId_ = "";
+      uid_ = "";
       username_ = "";
       email_ = "";
       firstName_ = "";
       lastName_ = "";
+      organizationId_ = "";
+      departmentId_ = "";
+      cardId_ = "";
       profileRole_ = "";
     }
 
@@ -692,7 +725,7 @@ public final class ConsumeEvents {
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              userId_ = s;
+              uid_ = s;
               break;
             }
             case 26: {
@@ -720,6 +753,24 @@ public final class ConsumeEvents {
               break;
             }
             case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              organizationId_ = s;
+              break;
+            }
+            case 66: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              departmentId_ = s;
+              break;
+            }
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              cardId_ = s;
+              break;
+            }
+            case 82: {
               java.lang.String s = input.readStringRequireUtf8();
 
               profileRole_ = s;
@@ -791,34 +842,34 @@ public final class ConsumeEvents {
       }
     }
 
-    public static final int USERID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object userId_;
+    public static final int UID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object uid_;
     /**
-     * <code>string userId = 2;</code>
+     * <code>string uid = 2;</code>
      */
-    public java.lang.String getUserId() {
-      java.lang.Object ref = userId_;
+    public java.lang.String getUid() {
+      java.lang.Object ref = uid_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        userId_ = s;
+        uid_ = s;
         return s;
       }
     }
     /**
-     * <code>string userId = 2;</code>
+     * <code>string uid = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getUserIdBytes() {
-      java.lang.Object ref = userId_;
+        getUidBytes() {
+      java.lang.Object ref = uid_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        userId_ = b;
+        uid_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -961,10 +1012,112 @@ public final class ConsumeEvents {
       }
     }
 
-    public static final int PROFILEROLE_FIELD_NUMBER = 7;
+    public static final int ORGANIZATIONID_FIELD_NUMBER = 7;
+    private volatile java.lang.Object organizationId_;
+    /**
+     * <code>string organizationId = 7;</code>
+     */
+    public java.lang.String getOrganizationId() {
+      java.lang.Object ref = organizationId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        organizationId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string organizationId = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOrganizationIdBytes() {
+      java.lang.Object ref = organizationId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        organizationId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DEPARTMENTID_FIELD_NUMBER = 8;
+    private volatile java.lang.Object departmentId_;
+    /**
+     * <code>string departmentId = 8;</code>
+     */
+    public java.lang.String getDepartmentId() {
+      java.lang.Object ref = departmentId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        departmentId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string departmentId = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDepartmentIdBytes() {
+      java.lang.Object ref = departmentId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        departmentId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CARDID_FIELD_NUMBER = 9;
+    private volatile java.lang.Object cardId_;
+    /**
+     * <code>string cardId = 9;</code>
+     */
+    public java.lang.String getCardId() {
+      java.lang.Object ref = cardId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        cardId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string cardId = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCardIdBytes() {
+      java.lang.Object ref = cardId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cardId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PROFILEROLE_FIELD_NUMBER = 10;
     private volatile java.lang.Object profileRole_;
     /**
-     * <code>string profileRole = 7;</code>
+     * <code>string profileRole = 10;</code>
      */
     public java.lang.String getProfileRole() {
       java.lang.Object ref = profileRole_;
@@ -979,7 +1132,7 @@ public final class ConsumeEvents {
       }
     }
     /**
-     * <code>string profileRole = 7;</code>
+     * <code>string profileRole = 10;</code>
      */
     public com.google.protobuf.ByteString
         getProfileRoleBytes() {
@@ -1012,8 +1165,8 @@ public final class ConsumeEvents {
       if (!getEventIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, eventId_);
       }
-      if (!getUserIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, userId_);
+      if (!getUidBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, uid_);
       }
       if (!getUsernameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, username_);
@@ -1027,8 +1180,17 @@ public final class ConsumeEvents {
       if (!getLastNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, lastName_);
       }
+      if (!getOrganizationIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, organizationId_);
+      }
+      if (!getDepartmentIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, departmentId_);
+      }
+      if (!getCardIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, cardId_);
+      }
       if (!getProfileRoleBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, profileRole_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, profileRole_);
       }
       unknownFields.writeTo(output);
     }
@@ -1042,8 +1204,8 @@ public final class ConsumeEvents {
       if (!getEventIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, eventId_);
       }
-      if (!getUserIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, userId_);
+      if (!getUidBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, uid_);
       }
       if (!getUsernameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, username_);
@@ -1057,8 +1219,17 @@ public final class ConsumeEvents {
       if (!getLastNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, lastName_);
       }
+      if (!getOrganizationIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, organizationId_);
+      }
+      if (!getDepartmentIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, departmentId_);
+      }
+      if (!getCardIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, cardId_);
+      }
       if (!getProfileRoleBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, profileRole_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, profileRole_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1077,8 +1248,8 @@ public final class ConsumeEvents {
 
       if (!getEventId()
           .equals(other.getEventId())) return false;
-      if (!getUserId()
-          .equals(other.getUserId())) return false;
+      if (!getUid()
+          .equals(other.getUid())) return false;
       if (!getUsername()
           .equals(other.getUsername())) return false;
       if (!getEmail()
@@ -1087,6 +1258,12 @@ public final class ConsumeEvents {
           .equals(other.getFirstName())) return false;
       if (!getLastName()
           .equals(other.getLastName())) return false;
+      if (!getOrganizationId()
+          .equals(other.getOrganizationId())) return false;
+      if (!getDepartmentId()
+          .equals(other.getDepartmentId())) return false;
+      if (!getCardId()
+          .equals(other.getCardId())) return false;
       if (!getProfileRole()
           .equals(other.getProfileRole())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -1102,8 +1279,8 @@ public final class ConsumeEvents {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + EVENTID_FIELD_NUMBER;
       hash = (53 * hash) + getEventId().hashCode();
-      hash = (37 * hash) + USERID_FIELD_NUMBER;
-      hash = (53 * hash) + getUserId().hashCode();
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + getUid().hashCode();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUsername().hashCode();
       hash = (37 * hash) + EMAIL_FIELD_NUMBER;
@@ -1112,6 +1289,12 @@ public final class ConsumeEvents {
       hash = (53 * hash) + getFirstName().hashCode();
       hash = (37 * hash) + LASTNAME_FIELD_NUMBER;
       hash = (53 * hash) + getLastName().hashCode();
+      hash = (37 * hash) + ORGANIZATIONID_FIELD_NUMBER;
+      hash = (53 * hash) + getOrganizationId().hashCode();
+      hash = (37 * hash) + DEPARTMENTID_FIELD_NUMBER;
+      hash = (53 * hash) + getDepartmentId().hashCode();
+      hash = (37 * hash) + CARDID_FIELD_NUMBER;
+      hash = (53 * hash) + getCardId().hashCode();
       hash = (37 * hash) + PROFILEROLE_FIELD_NUMBER;
       hash = (53 * hash) + getProfileRole().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -1249,7 +1432,7 @@ public final class ConsumeEvents {
         super.clear();
         eventId_ = "";
 
-        userId_ = "";
+        uid_ = "";
 
         username_ = "";
 
@@ -1258,6 +1441,12 @@ public final class ConsumeEvents {
         firstName_ = "";
 
         lastName_ = "";
+
+        organizationId_ = "";
+
+        departmentId_ = "";
+
+        cardId_ = "";
 
         profileRole_ = "";
 
@@ -1288,11 +1477,14 @@ public final class ConsumeEvents {
       public com.cseiu.passnet.saga.profilesaga.ConsumeEvents.UserRegisteredEventProtobuf buildPartial() {
         com.cseiu.passnet.saga.profilesaga.ConsumeEvents.UserRegisteredEventProtobuf result = new com.cseiu.passnet.saga.profilesaga.ConsumeEvents.UserRegisteredEventProtobuf(this);
         result.eventId_ = eventId_;
-        result.userId_ = userId_;
+        result.uid_ = uid_;
         result.username_ = username_;
         result.email_ = email_;
         result.firstName_ = firstName_;
         result.lastName_ = lastName_;
+        result.organizationId_ = organizationId_;
+        result.departmentId_ = departmentId_;
+        result.cardId_ = cardId_;
         result.profileRole_ = profileRole_;
         onBuilt();
         return result;
@@ -1346,8 +1538,8 @@ public final class ConsumeEvents {
           eventId_ = other.eventId_;
           onChanged();
         }
-        if (!other.getUserId().isEmpty()) {
-          userId_ = other.userId_;
+        if (!other.getUid().isEmpty()) {
+          uid_ = other.uid_;
           onChanged();
         }
         if (!other.getUsername().isEmpty()) {
@@ -1364,6 +1556,18 @@ public final class ConsumeEvents {
         }
         if (!other.getLastName().isEmpty()) {
           lastName_ = other.lastName_;
+          onChanged();
+        }
+        if (!other.getOrganizationId().isEmpty()) {
+          organizationId_ = other.organizationId_;
+          onChanged();
+        }
+        if (!other.getDepartmentId().isEmpty()) {
+          departmentId_ = other.departmentId_;
+          onChanged();
+        }
+        if (!other.getCardId().isEmpty()) {
+          cardId_ = other.cardId_;
           onChanged();
         }
         if (!other.getProfileRole().isEmpty()) {
@@ -1468,71 +1672,71 @@ public final class ConsumeEvents {
         return this;
       }
 
-      private java.lang.Object userId_ = "";
+      private java.lang.Object uid_ = "";
       /**
-       * <code>string userId = 2;</code>
+       * <code>string uid = 2;</code>
        */
-      public java.lang.String getUserId() {
-        java.lang.Object ref = userId_;
+      public java.lang.String getUid() {
+        java.lang.Object ref = uid_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          userId_ = s;
+          uid_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string userId = 2;</code>
+       * <code>string uid = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getUserIdBytes() {
-        java.lang.Object ref = userId_;
+          getUidBytes() {
+        java.lang.Object ref = uid_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          userId_ = b;
+          uid_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string userId = 2;</code>
+       * <code>string uid = 2;</code>
        */
-      public Builder setUserId(
+      public Builder setUid(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        userId_ = value;
+        uid_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string userId = 2;</code>
+       * <code>string uid = 2;</code>
        */
-      public Builder clearUserId() {
+      public Builder clearUid() {
         
-        userId_ = getDefaultInstance().getUserId();
+        uid_ = getDefaultInstance().getUid();
         onChanged();
         return this;
       }
       /**
-       * <code>string userId = 2;</code>
+       * <code>string uid = 2;</code>
        */
-      public Builder setUserIdBytes(
+      public Builder setUidBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        userId_ = value;
+        uid_ = value;
         onChanged();
         return this;
       }
@@ -1813,9 +2017,216 @@ public final class ConsumeEvents {
         return this;
       }
 
+      private java.lang.Object organizationId_ = "";
+      /**
+       * <code>string organizationId = 7;</code>
+       */
+      public java.lang.String getOrganizationId() {
+        java.lang.Object ref = organizationId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          organizationId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string organizationId = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOrganizationIdBytes() {
+        java.lang.Object ref = organizationId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          organizationId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string organizationId = 7;</code>
+       */
+      public Builder setOrganizationId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        organizationId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string organizationId = 7;</code>
+       */
+      public Builder clearOrganizationId() {
+        
+        organizationId_ = getDefaultInstance().getOrganizationId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string organizationId = 7;</code>
+       */
+      public Builder setOrganizationIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        organizationId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object departmentId_ = "";
+      /**
+       * <code>string departmentId = 8;</code>
+       */
+      public java.lang.String getDepartmentId() {
+        java.lang.Object ref = departmentId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          departmentId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string departmentId = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDepartmentIdBytes() {
+        java.lang.Object ref = departmentId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          departmentId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string departmentId = 8;</code>
+       */
+      public Builder setDepartmentId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        departmentId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string departmentId = 8;</code>
+       */
+      public Builder clearDepartmentId() {
+        
+        departmentId_ = getDefaultInstance().getDepartmentId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string departmentId = 8;</code>
+       */
+      public Builder setDepartmentIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        departmentId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object cardId_ = "";
+      /**
+       * <code>string cardId = 9;</code>
+       */
+      public java.lang.String getCardId() {
+        java.lang.Object ref = cardId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          cardId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string cardId = 9;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCardIdBytes() {
+        java.lang.Object ref = cardId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cardId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string cardId = 9;</code>
+       */
+      public Builder setCardId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        cardId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string cardId = 9;</code>
+       */
+      public Builder clearCardId() {
+        
+        cardId_ = getDefaultInstance().getCardId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string cardId = 9;</code>
+       */
+      public Builder setCardIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        cardId_ = value;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object profileRole_ = "";
       /**
-       * <code>string profileRole = 7;</code>
+       * <code>string profileRole = 10;</code>
        */
       public java.lang.String getProfileRole() {
         java.lang.Object ref = profileRole_;
@@ -1830,7 +2241,7 @@ public final class ConsumeEvents {
         }
       }
       /**
-       * <code>string profileRole = 7;</code>
+       * <code>string profileRole = 10;</code>
        */
       public com.google.protobuf.ByteString
           getProfileRoleBytes() {
@@ -1846,7 +2257,7 @@ public final class ConsumeEvents {
         }
       }
       /**
-       * <code>string profileRole = 7;</code>
+       * <code>string profileRole = 10;</code>
        */
       public Builder setProfileRole(
           java.lang.String value) {
@@ -1859,7 +2270,7 @@ public final class ConsumeEvents {
         return this;
       }
       /**
-       * <code>string profileRole = 7;</code>
+       * <code>string profileRole = 10;</code>
        */
       public Builder clearProfileRole() {
         
@@ -1868,7 +2279,7 @@ public final class ConsumeEvents {
         return this;
       }
       /**
-       * <code>string profileRole = 7;</code>
+       * <code>string profileRole = 10;</code>
        */
       public Builder setProfileRoleBytes(
           com.google.protobuf.ByteString value) {
@@ -2508,20 +2919,21 @@ public final class ConsumeEvents {
   static {
     java.lang.String[] descriptorData = {
       "\n\024consume-events.proto\022\rconsumeEvents\"\"\n" +
-      "\017EventIdProtobuf\022\017\n\007eventId\030\001 \001(\t\"\231\001\n\033Us" +
+      "\017EventIdProtobuf\022\017\n\007eventId\030\001 \001(\t\"\324\001\n\033Us" +
       "erRegisteredEventProtobuf\022\017\n\007eventId\030\001 \001" +
-      "(\t\022\016\n\006userId\030\002 \001(\t\022\020\n\010username\030\003 \001(\t\022\r\n\005" +
-      "email\030\004 \001(\t\022\021\n\tfirstName\030\005 \001(\t\022\020\n\010lastNa" +
-      "me\030\006 \001(\t\022\023\n\013profileRole\030\007 \001(\t\"*\n\027Service" +
-      "ResponseProtobuf\022\017\n\007message\030\001 \001(\t2\206\001\n\020Ev" +
-      "entConsumerRpc\022r\n\032ConsumeUserRegisteredE" +
-      "vent\022*.consumeEvents.UserRegisteredEvent" +
-      "Protobuf\032&.consumeEvents.ServiceResponse" +
-      "Protobuf\"\0002l\n\024CompensatingExecutor\022T\n\010Ro" +
-      "llback\022\036.consumeEvents.EventIdProtobuf\032&" +
-      ".consumeEvents.ServiceResponseProtobuf\"\000" +
-      "B$\n\"com.cseiu.passnet.saga.profilesagab\006" +
-      "proto3"
+      "(\t\022\013\n\003uid\030\002 \001(\t\022\020\n\010username\030\003 \001(\t\022\r\n\005ema" +
+      "il\030\004 \001(\t\022\021\n\tfirstName\030\005 \001(\t\022\020\n\010lastName\030" +
+      "\006 \001(\t\022\026\n\016organizationId\030\007 \001(\t\022\024\n\014departm" +
+      "entId\030\010 \001(\t\022\016\n\006cardId\030\t \001(\t\022\023\n\013profileRo" +
+      "le\030\n \001(\t\"*\n\027ServiceResponseProtobuf\022\017\n\007m" +
+      "essage\030\001 \001(\t2\206\001\n\020EventConsumerRpc\022r\n\032Con" +
+      "sumeUserRegisteredEvent\022*.consumeEvents." +
+      "UserRegisteredEventProtobuf\032&.consumeEve" +
+      "nts.ServiceResponseProtobuf\"\0002l\n\024Compens" +
+      "atingExecutor\022T\n\010Rollback\022\036.consumeEvent" +
+      "s.EventIdProtobuf\032&.consumeEvents.Servic" +
+      "eResponseProtobuf\"\000B$\n\"com.cseiu.passnet" +
+      ".saga.profilesagab\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2546,7 +2958,7 @@ public final class ConsumeEvents {
     internal_static_consumeEvents_UserRegisteredEventProtobuf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_consumeEvents_UserRegisteredEventProtobuf_descriptor,
-        new java.lang.String[] { "EventId", "UserId", "Username", "Email", "FirstName", "LastName", "ProfileRole", });
+        new java.lang.String[] { "EventId", "Uid", "Username", "Email", "FirstName", "LastName", "OrganizationId", "DepartmentId", "CardId", "ProfileRole", });
     internal_static_consumeEvents_ServiceResponseProtobuf_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_consumeEvents_ServiceResponseProtobuf_fieldAccessorTable = new

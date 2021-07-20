@@ -20,7 +20,7 @@ public class SagaStoreService {
         return this.sagaStore.get(eventId);
     }
 
-    public void removeSaga(String eventId){
+    public void removeSaga(String eventId) {
         this.checkSagaExist(eventId);
         this.sagaStore.remove(eventId);
     }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceResponseHandler {
 
-    private static String SERVICE_NAME = DomainServiceNames.USER_SERVICE.name();
+    private static String SERVICE_NAME = DomainServiceNames.PROFILE_SERVICE.name();
     private final EventStoreService eventStoreService;
     private final KafkaTemplate<String, Object> kafkaTemplate;
 

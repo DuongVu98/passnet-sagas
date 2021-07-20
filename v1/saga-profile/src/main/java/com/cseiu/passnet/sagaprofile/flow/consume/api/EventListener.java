@@ -20,7 +20,7 @@ public class EventListener {
     }
 
     @KafkaListener(topics = "${config.messaging.topics.user-registered-event}")
-    public void listen(@Payload UserRegisteredEventAvro event){
+    public void listen(@Payload UserRegisteredEventAvro event) {
         log.info("about to consume UserRegisteredEvent: {}", event.getEventId());
 
         consumingExecutor.consume(event);

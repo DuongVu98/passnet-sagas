@@ -21,9 +21,9 @@ public class SagaOrchestrator {
         return result == 1;
     }
 
-    public void updateSuccessService(DomainServiceNames serviceName){
+    public void updateSuccessService(DomainServiceNames serviceName) {
         this.domainServices.forEach(service -> {
-            if(service.getServiceName()==serviceName) {
+            if (service.getServiceName() == serviceName) {
                 service.setStatusSuccess();
             }
         });

@@ -21,7 +21,7 @@ public class ResponseListener {
     }
 
     @KafkaListener(topics = "${config.messaging.topics.failure-response}")
-    public void listen(FailureResponse response){
+    public void listen(FailureResponse response) {
         log.info("about to consume failure response message for event: [{}]", response.getEventId());
         consumingExecutor.consume(response);
     }

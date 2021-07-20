@@ -3,7 +3,7 @@ package com.cseiu.passnet.sagaprofile.common.exceptions;
 import lombok.Getter;
 
 @Getter
-public class EventNotFoundException extends RuntimeException{
+public class EventNotFoundException extends RuntimeException {
     public EventNotFoundException(String message) {
         super(message);
     }

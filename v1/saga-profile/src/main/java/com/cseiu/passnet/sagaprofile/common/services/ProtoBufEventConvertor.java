@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProtoBufEventConvertor {
-    public ConsumeEvents.UserRegisteredEventProtobuf convert(UserRegisteredEventAvro avro){
+    public ConsumeEvents.UserRegisteredEventProtobuf convert(UserRegisteredEventAvro avro) {
         return ConsumeEvents.UserRegisteredEventProtobuf.newBuilder()
            .setEventId(avro.getEventId())
-           .setUserId(avro.getUserId())
+           .setUid(avro.getUserId())
            .setUsername(avro.getUsername())
            .setEmail(avro.getEmail())
            .setFirstName(avro.getFirstName())

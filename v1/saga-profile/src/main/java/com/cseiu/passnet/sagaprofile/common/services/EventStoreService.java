@@ -14,17 +14,17 @@ public class EventStoreService {
         this.eventStore.add(eventId);
     }
 
-    public boolean contains(String eventId){
+    public boolean contains(String eventId) {
         return this.eventStore.contains(eventId);
     }
 
-    public void removeEvent(String eventId){
+    public void removeEvent(String eventId) {
         this.checkEventExist(eventId);
         this.eventStore.remove(eventId);
     }
 
     private void checkEventExist(String eventId) {
-        if(!this.eventStore.contains(eventId)) {
+        if (!this.eventStore.contains(eventId)) {
             throw new EventNotFoundException(String.format("event with eventId %s not found", eventId));
         }
     }
