@@ -24,7 +24,7 @@ public class SagaAspect {
         this.sagaStoreService = sagaStoreService;
     }
 
-    @Pointcut("@annotation(com.cseiu.passnet.sagaprofile.common.annotations.CleanupSaga)")
+    @Pointcut("@annotation(com.cseiu.sagaorganizer.common.annotations.CleanupSaga)")
     void successSagaPointcut() {
     }
 

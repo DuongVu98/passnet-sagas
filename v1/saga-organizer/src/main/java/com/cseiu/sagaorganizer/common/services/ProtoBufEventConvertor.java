@@ -15,6 +15,9 @@ public class ProtoBufEventConvertor {
            .setFirstName(avro.getFirstName())
            .setLastName(avro.getLastName())
            .setProfileRole(avro.getProfileRole())
+           .setCardId(avro.getCardId())
+           .setDepartmentId(avro.getDepartmentId())
+           .setOrganizationId(avro.getOrganizationId())
            .build();
     }
 }
