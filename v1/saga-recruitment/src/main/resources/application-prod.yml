@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: passnet-recruitment-saga
+grpc:
+  client:
+    user-service:
+      address: 'static://${RECRUITMENT_SERVICE_GRPC_ADDRESS}'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+  server:
+    port: ${RECRUITMENT_SAGA_PORT}

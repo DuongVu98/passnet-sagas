@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: passnet-organizer-saga
+  kafka:
+    consumer:
+      group-id: passnet_organizer_saga_group
+grpc:
+  client:
+    organizer-service:
+      address: 'static://${ORGANIZER_SERVICE_GRPC_ADDRESS}'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+  server:
+    port: ${ORGANIZER_SAGA_PORT}

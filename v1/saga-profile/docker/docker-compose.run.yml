@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  passnet-profile:
+    image: tony16019/passnet-profile-saga:latest
+    container_name: passnet-profile
+    environment:
+      - PROFILE=prod
+      - PROFILE_SERVICE_GRPC_HOST=localhost
+      - PROFILE_SERVICE_GRPC_PORT=6161
+      - PROFILE_SAGA_PORT=7071

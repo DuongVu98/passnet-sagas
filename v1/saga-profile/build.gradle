@@ -100,7 +100,7 @@ bootJar {
     archiveName 'PassnetProfileSaga.jar'
     manifest {
         attributes(
-                'Start-Class': 'com.cseiu.passnet.saga.usersaga.ProfileSagaApplication'
+                'Start-Class': 'com.cseiu.passnet.sagaprofile.ProfileSagaApplication'
         )
     }
 }

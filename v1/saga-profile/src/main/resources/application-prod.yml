@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: passnet-profile-saga
+  kafka:
+    consumer:
+      group-id: passnet_profile_saga_group
+grpc:
+  client:
+    profile-service:
+      address: 'static://${PROFILE_SERVICE_GRPC_HOST}:${PROFILE_SERVICE_GRPC_PORT}'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+  server:
+    port: ${PROFILE_SAGA_PORT}
