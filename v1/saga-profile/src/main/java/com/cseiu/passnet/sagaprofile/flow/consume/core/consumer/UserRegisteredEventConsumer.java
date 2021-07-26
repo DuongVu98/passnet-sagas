@@ -4,11 +4,13 @@ import com.cse.iu.passnet.saga.avro.UserRegisteredEventAvro;
 import com.cseiu.passnet.saga.profilesaga.EventConsumerRpcGrpc;
 import com.cseiu.passnet.sagaprofile.common.services.ProtoBufEventConvertor;
 import com.cseiu.passnet.sagaprofile.flow.consume.core.handler.ServiceResponseHandler;
+import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j(topic = "[UserRegisteredEventConsumer]")
 public class UserRegisteredEventConsumer implements IMessageConsumer<UserRegisteredEventAvro> {
 
     private final ProtoBufEventConvertor protoBufEventConvertor;
@@ -27,6 +29,7 @@ public class UserRegisteredEventConsumer implements IMessageConsumer<UserRegiste
     public void consume(UserRegisteredEventAvro eventAvro) {
         var protobufMessage = protoBufEventConvertor.convert(eventAvro);
         var response = eventConsumerStub.consumeUserRegisteredEvent(protobufMessage);
+        log.info("log service response after consume events: {}", response.getMessage());
         serviceResponseHandler.handle(response, eventAvro.getEventId());
     }
 }
